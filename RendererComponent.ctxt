@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=width\ height
+comment0.target=RendererComponent(int,\ int)
+comment1.params=g
+comment1.target=void\ paintComponent(java.awt.Graphics)
+comment2.params=mouseX\ mouseY
+comment2.target=void\ updateMouse(int,\ int)
+comment3.params=
+comment3.target=void\ click()
+numComments=4

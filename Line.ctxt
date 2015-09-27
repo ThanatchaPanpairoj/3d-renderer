@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=p1\ p2
+comment0.target=Line(Point,\ Point)
+comment1.params=g2
+comment1.target=void\ draw(java.awt.Graphics2D)
+comment2.params=
+comment2.target=Point\ getPointOne()
+comment3.params=
+comment3.target=Point\ getPointTwo()
+numComments=4
