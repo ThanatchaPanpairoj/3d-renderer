@@ -57,6 +57,7 @@ public class Renderer extends JFrame
 
         final int width = this.getWidth();
         final int height = this.getHeight();
+        //System.out.println("" + width + ", " + height);
 
         //         frame.setUndecorated(true);
         //         frame.setShape(new Ellipse2D.Double(0,0, 800, 800));//circle frame?
