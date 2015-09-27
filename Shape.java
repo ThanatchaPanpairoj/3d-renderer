@@ -20,6 +20,8 @@ public class Shape
     }
     
     public void transform(double[] transformationMatrix) {
-        
+        for(Line l : lines) {
+            l.transform(transformationMatrix);
+        }
     }
 }

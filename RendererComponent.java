@@ -17,19 +17,19 @@ public class RendererComponent extends JComponent
 {
     private int width, height;
     private ArrayList<Shape> shapes;
-    private ArrayList<Line> lines;
+    private ArrayList<Line> grid;
 
     public RendererComponent(int width, int height) {
         this.width = width;
         this.height = height;
-        Point p1 = new Point(200, 200, 200);
-        Point p2 = new Point(200, -200, 200);
-        Point p3 = new Point(-200, -200, 200);
-        Point p4 = new Point(-200, 200, 200);
-        Point p5 = new Point(200, 200, 600);
-        Point p6 = new Point(200, -200, 600);
-        Point p7 = new Point(-200, -200, 600);
-        Point p8 = new Point(-200, 200, 600);
+        Point p1 = new Point(200, 200, 200, 1);
+        Point p2 = new Point(200, -200, 200, 1);
+        Point p3 = new Point(-200, -200, 200, 1);
+        Point p4 = new Point(-200, 200, 200, 1);
+        Point p5 = new Point(200, 200, 600, 1);
+        Point p6 = new Point(200, -200, 600, 1);
+        Point p7 = new Point(-200, -200, 600, 1);
+        Point p8 = new Point(-200, 200, 600, 1);
         shapes = new ArrayList<Shape>();
         shapes.add(new Shape(new Line[] {new Line(p1, p2), 
                     new Line(p2, p3), 
@@ -43,11 +43,11 @@ public class RendererComponent extends JComponent
                     new Line(p2, p6), 
                     new Line(p3, p7), 
                     new Line(p4, p8)}));
-        lines = new ArrayList<Line>();
-        for(int w = -10000; w <= 10000; w += 100) {
-            lines.add(new Line(new Point(w, height, 0), new Point(w, height, 10000)));
+        grid = new ArrayList<Line>();
+        for(int w = -10000; w <= 10000; w += 200) {
+            grid.add(new Line(new Point(w, height, 0, 1), new Point(w, height, 10000, 1)));
             if(w >= 0)
-                lines.add(new Line(new Point(-10000, height, w), new Point(10000, height, w)));
+                grid.add(new Line(new Point(-10000, height, w, 1), new Point(10000, height, w, 1)));
         }
     }
 
@@ -58,8 +58,12 @@ public class RendererComponent extends JComponent
 
         for(Shape s : shapes) {
             s.draw(g2);
+            //s.transform(new double[] {Math.cos(0.001), Math.sin(0.001), 0, 0, -Math.sin(0.001), Math.cos(0.001), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1});
+            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -200, 1});
+            s.transform(new double[] {Math.cos(0.001), 0, Math.sin(0.001), 0, 0, 1, 0, 0, -Math.sin(0.001), 0, Math.cos(0.001), 0, 0, 0, 0, 1});
+            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 200, 1});
         }
-        for(Line l : lines) {
+        for(Line l : grid) {
             l.draw(g2);
         }
     }

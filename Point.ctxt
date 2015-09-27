@@ -1,14 +1,16 @@
 #BlueJ class context
-comment0.params=x\ y\ z
-comment0.target=Point(double,\ double,\ double)
-comment1.params=
-comment1.target=double\ get2Dx()
+comment0.params=x\ y\ z\ s
+comment0.target=Point(double,\ double,\ double,\ double)
+comment1.params=transformationMatrix
+comment1.target=void\ transform(double[])
 comment2.params=
-comment2.target=double\ get2Dy()
+comment2.target=double\ get2Dx()
 comment3.params=
-comment3.target=double\ getX()
+comment3.target=double\ get2Dy()
 comment4.params=
-comment4.target=double\ getY()
+comment4.target=double\ getX()
 comment5.params=
-comment5.target=double\ getZ()
-numComments=6
+comment5.target=double\ getY()
+comment6.params=
+comment6.target=double\ getZ()
+numComments=7
