@@ -14,7 +14,7 @@ public class Point
         this.y = y;
         this.z = z;
         this.s = s;
-        zScaler = (600 - z * (600 / (1500 + z))) / 600;
+        zScaler = (600 - z * (600 / (2000 + z))) / 600;
     }
 
     public void transform(double[] transformationMatrix) {
@@ -22,7 +22,7 @@ public class Point
         y = x * transformationMatrix[4] + y * transformationMatrix[5] + z * transformationMatrix[6] + s * transformationMatrix[7] + transformationMatrix[13];
         z = x * transformationMatrix[8] + y * transformationMatrix[9] + z * transformationMatrix[10] + s * transformationMatrix[11]  + transformationMatrix[14];
         //s = s * transformationMatrix[12] + y * transformationMatrix[13] + z * transformationMatrix[14] + s * transformationMatrix[15];
-        zScaler = (600 - z * (600 / (1500 + z))) / 600;
+        zScaler = (600 - z * (600 / (2000 + z))) / 600;
     }
 
     public double get2Dx() {

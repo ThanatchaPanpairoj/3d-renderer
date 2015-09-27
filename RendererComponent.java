@@ -59,9 +59,9 @@ public class RendererComponent extends JComponent
         for(Shape s : shapes) {
             s.draw(g2);
             //s.transform(new double[] {Math.cos(0.001), Math.sin(0.001), 0, 0, -Math.sin(0.001), Math.cos(0.001), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1});
-            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -200, 1});
+            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -100, 1});
             s.transform(new double[] {Math.cos(0.001), 0, Math.sin(0.001), 0, 0, 1, 0, 0, -Math.sin(0.001), 0, Math.cos(0.001), 0, 0, 0, 0, 1});
-            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 200, 1});
+            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 100, 1});
         }
         for(Line l : grid) {
             l.draw(g2);
