@@ -1,6 +1,7 @@
 import java.awt.Graphics2D;
 import java.awt.Polygon;
 import java.awt.Color;
+import java.awt.BasicStroke;
 
 /**
  * Write a description of class Shape here.
@@ -91,10 +92,18 @@ public class Shape
 
         int closestPointIndex = 0;
         int[] sortedClosestPointIndexes = new int[6];
-        for(int i = 0; i < 6; i++) {
+        Line[] closestLines = new Line[3];
+        for(int i = 0, closestLineIndex = 0; i < 6; i++) {
             for(int j = 0; j < 6; j++) {
                 if(closestPoints[j] < closestPoints[closestPointIndex] - 0.01 || (closestPoints[j] - 0.01 < closestPoints[closestPointIndex] && furtherestPoints[j] < furtherestPoints[closestPointIndex])) {
                     closestPointIndex = j;
+                }
+            }
+            if(i == 0) {
+                for(Line l : lines) {
+                    if(l.getPointOne().getZ() - closestPoints[closestPointIndex] < 0.1 || l.getPointTwo().getZ() - closestPoints[closestPointIndex] < 0.01) {
+                        closestLines[closestLineIndex] = l;
+                    }
                 }
             }
             sortedClosestPointIndexes[i] = closestPointIndex;
@@ -103,24 +112,29 @@ public class Shape
         }
 
         for(int i = 5; i > -1; i--) {
-            fillSide(g2, sortedClosestPointIndexes[i] + 1);
+            fillSide(g2, sortedClosestPointIndexes[i]);
         }
+        
+        g2.setColor(Color.BLACK);
+        for(Line l : closestLines)
+            if(l != null)
+                l.draw(g2);
     }
 
     public void fillSide(Graphics2D g2, int side) {
-        if(side == 1) {
+        if(side == 0) {
             g2.setColor(Color.BLUE);
             g2.fillPolygon(p1);
-        } else if(side == 2) {
+        } else if(side == 1) {
             g2.setColor(Color.GREEN);
             g2.fillPolygon(p2);
-        } else if(side == 3) {
+        } else if(side == 2) {
             g2.setColor(Color.RED);
             g2.fillPolygon(p3);
-        } else if(side == 4) {
+        } else if(side == 3) {
             g2.setColor(Color.YELLOW);
             g2.fillPolygon(p4);
-        } else if(side == 5) {
+        } else if(side == 4) {
             g2.setColor(Color.CYAN);
             g2.fillPolygon(p5);
         } else {

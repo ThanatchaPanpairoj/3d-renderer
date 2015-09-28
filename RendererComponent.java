@@ -55,8 +55,8 @@ public class RendererComponent extends JComponent
 
         for(Shape s : shapes) {
             s.draw(g2);
-            s.transform(new double[] {Math.cos(0.004), Math.sin(0.004), 0, 0, 
-                                     -Math.sin(0.004), Math.cos(0.004), 0, 0, 
+            s.transform(new double[] {Math.cos(0.004) * 1.000004, Math.sin(0.004) * 1.000004, 0, 0, 
+                                     -Math.sin(0.004) * 1.000004, Math.cos(0.004) * 1.000004, 0, 0, 
                                                     0,             0, 1, 0,
                                                     0,             0, 0, 1});
                                                     
@@ -65,14 +65,14 @@ public class RendererComponent extends JComponent
                                       0, 0, 1, -400, 
                                       0, 0, 0,    1});
                                       
-            s.transform(new double[] {Math.cos(0.008), 0, Math.sin(0.008), 0,
+            s.transform(new double[] {Math.cos(0.008) * 1.000008, 0, Math.sin(0.008) * 1.000008, 0,
                                                    0, 1,              0, 0, 
-                                     -Math.sin(0.008), 0, Math.cos(0.008), 0, 
+                                     -Math.sin(0.008) * 1.000008, 0, Math.cos(0.008) * 1.000008, 0, 
                                                    0, 0,              0, 1});
                                                     
             s.transform(new double[] {1,               0,              0, 0, 
-                                      0,  Math.cos(0.006), Math.sin(0.006), 0, 
-                                      0, -Math.sin(0.006), Math.cos(0.006), 0, 
+                                      0,  Math.cos(0.006) * 1.000006, Math.sin(0.006) * 1.000006, 0, 
+                                      0, -Math.sin(0.006) * 1.000006, Math.cos(0.006) * 1.000006, 0, 
                                       0,               0,              0, 1});
                                       
             s.transform(new double[] {1, 0, 0,   0,
