@@ -22,32 +22,24 @@ public class RendererComponent extends JComponent
     public RendererComponent(int width, int height) {
         this.width = width;
         this.height = height;
-        Point p1 = new Point(200, 200, 200, 1);
-        Point p2 = new Point(200, -200, 200, 1);
-        Point p3 = new Point(-200, -200, 200, 1);
-        Point p4 = new Point(-200, 200, 200, 1);
-        Point p5 = new Point(200, 200, 600, 1);
-        Point p6 = new Point(200, -200, 600, 1);
-        Point p7 = new Point(-200, -200, 600, 1);
-        Point p8 = new Point(-200, 200, 600, 1);
+
         shapes = new ArrayList<Shape>();
-        shapes.add(new Shape(new Line[] {new Line(p1, p2), 
-                    new Line(p2, p3), 
-                    new Line(p3, p4), 
-                    new Line(p4, p1), 
-                    new Line(p5, p6), 
-                    new Line(p6, p7), 
-                    new Line(p7, p8), 
-                    new Line(p8, p5), 
-                    new Line(p1, p5), 
-                    new Line(p2, p6), 
-                    new Line(p3, p7), 
-                    new Line(p4, p8)}));
+        shapes.add(new Shape(new Point[] {new Point(200, 200, 200, 1),
+                                          new Point(200, -200, 200, 1),
+                                          new Point(-200, -200, 200, 1),
+                                          new Point(-200, 200, 200, 1),
+                                          new Point(200, 200, 600, 1),
+                                          new Point(200, -200, 600, 1),
+                                          new Point(-200, -200, 600, 1),
+                                          new Point(-200, 200, 600, 1)}));
+                                          
         grid = new ArrayList<Line>();
+
         for(int w = -10000; w <= 10000; w += 200) {
             grid.add(new Line(new Point(w, height, 0, 1), new Point(w, height, 10000, 1)));
-            if(w >= 0)
+            if(w >= 0) {
                 grid.add(new Line(new Point(-10000, height, w, 1), new Point(10000, height, w, 1)));
+            }
         }
     }
 
@@ -56,15 +48,36 @@ public class RendererComponent extends JComponent
         g2.translate(width / 2, height / 2);
         g2.setColor(Color.BLACK);
 
-        for(Shape s : shapes) {
-            s.draw(g2);
-            //s.transform(new double[] {Math.cos(0.001), Math.sin(0.001), 0, 0, -Math.sin(0.001), Math.cos(0.001), 0, 0, 0, 0, 1, 0, 0, 0, 0, 1});
-            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -100, 1});
-            s.transform(new double[] {Math.cos(0.001), 0, Math.sin(0.001), 0, 0, 1, 0, 0, -Math.sin(0.001), 0, Math.cos(0.001), 0, 0, 0, 0, 1});
-            s.transform(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 100, 1});
-        }
         for(Line l : grid) {
             l.draw(g2);
+        }
+
+        for(Shape s : shapes) {
+            s.draw(g2);
+             s.transform(new double[] {Math.cos(-0.015), Math.sin(-0.015), 0, 0, 
+                                      -Math.sin(-0.015), Math.cos(-0.015), 0, 0, 
+                                                     0,               0, 1, 0,
+                                                     0,               0, 0, 1});
+                                                    
+            s.transform(new double[] {1, 0, 0,    0, 
+                                      0, 1, 0,    0, 
+                                      0, 0, 1, -400, 
+                                      0, 0, 0,    1});
+                                      
+             s.transform(new double[] {Math.cos(0.007), 0, Math.sin(0.007), 0,
+                                                     0, 1,               0, 0, 
+                                      -Math.sin(0.007), 0, Math.cos(0.007), 0, 
+                                                     0, 0,               0, 1});
+                                                    
+             s.transform(new double[] {1,                0,               0, 0, 
+                                       0,  Math.cos(0.008), Math.sin(0.008), 0, 
+                                       0, -Math.sin(0.008), Math.cos(0.008), 0, 
+                                       0,                0,               0, 1});
+                                      
+            s.transform(new double[] {1, 0, 0,   0,
+                                      0, 1, 0,   0, 
+                                      0, 0, 1, 400, 
+                                      0, 0, 0,   1});
         }
     }
 

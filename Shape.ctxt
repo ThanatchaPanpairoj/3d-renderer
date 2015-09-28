@@ -1,8 +1,10 @@
 #BlueJ class context
-comment0.params=lines
-comment0.target=Shape(Line[])
+comment0.params=points
+comment0.target=Shape(Point[])
 comment1.params=g2
 comment1.target=void\ draw(java.awt.Graphics2D)
-comment2.params=transformationMatrix
-comment2.target=void\ transform(double[])
-numComments=3
+comment2.params=g2\ side
+comment2.target=void\ fillSide(java.awt.Graphics2D,\ int)
+comment3.params=transformationMatrix
+comment3.target=void\ transform(double[])
+numComments=4
