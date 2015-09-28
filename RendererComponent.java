@@ -52,27 +52,28 @@ public class RendererComponent extends JComponent
             l.draw(g2);
         }
 
+
         for(Shape s : shapes) {
             s.draw(g2);
-             s.transform(new double[] {Math.cos(-0.015), Math.sin(-0.015), 0, 0, 
-                                      -Math.sin(-0.015), Math.cos(-0.015), 0, 0, 
-                                                     0,               0, 1, 0,
-                                                     0,               0, 0, 1});
+            s.transform(new double[] {Math.cos(0.006), Math.sin(0.006), 0, 0, 
+                                     -Math.sin(0.006), Math.cos(0.006), 0, 0, 
+                                                    0,             0, 1, 0,
+                                                    0,             0, 0, 1});
                                                     
             s.transform(new double[] {1, 0, 0,    0, 
                                       0, 1, 0,    0, 
                                       0, 0, 1, -400, 
                                       0, 0, 0,    1});
                                       
-             s.transform(new double[] {Math.cos(0.007), 0, Math.sin(0.007), 0,
-                                                     0, 1,               0, 0, 
-                                      -Math.sin(0.007), 0, Math.cos(0.007), 0, 
-                                                     0, 0,               0, 1});
+            s.transform(new double[] {Math.cos(0.004), 0, Math.sin(0.004), 0,
+                                                   0, 1,              0, 0, 
+                                     -Math.sin(0.004), 0, Math.cos(0.004), 0, 
+                                                   0, 0,              0, 1});
                                                     
-             s.transform(new double[] {1,                0,               0, 0, 
-                                       0,  Math.cos(0.008), Math.sin(0.008), 0, 
-                                       0, -Math.sin(0.008), Math.cos(0.008), 0, 
-                                       0,                0,               0, 1});
+            s.transform(new double[] {1,               0,              0, 0, 
+                                      0,  Math.cos(0.003), Math.sin(0.003), 0, 
+                                      0, -Math.sin(0.003), Math.cos(0.003), 0, 
+                                      0,               0,              0, 1});
                                       
             s.transform(new double[] {1, 0, 0,   0,
                                       0, 1, 0,   0, 
