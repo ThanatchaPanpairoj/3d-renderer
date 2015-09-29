@@ -14,8 +14,12 @@ public class Shape
     private Line[] lines;
     private Point[] points;
     private Polygon p1, p2, p3, p4, p5, p6;
+    private double x, y, z;
 
-    public Shape(Point[] points) {
+    public Shape(double x, double y, double z, Point[] points) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
         this.points = points;
 
         lines = new Line[12];
@@ -129,11 +133,27 @@ public class Shape
             g2.setColor(Color.ORANGE);
             g2.fillPolygon(p6);
         }
-    }
+    } 
 
     public void transform(double[] transformationMatrix) {
         for(Point p : points) {
             p.transform(transformationMatrix);
-        }
+        } 
+        
+        x += transformationMatrix[3];
+        y += transformationMatrix[7];
+        z += transformationMatrix[11];
+    }
+    
+    public double getX() {
+        return x;
+    }
+    
+    public double getY() {
+        return y;
+    }
+    
+    public double getZ() {
+        return z;
     }
 }

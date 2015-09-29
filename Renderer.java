@@ -41,6 +41,7 @@ import java.io.IOException;
 public class Renderer extends JFrame
 {
     private int mouseX, mouseY;
+    private boolean left, right;
 
     public static void main(String[] args) {
         Renderer r = new Renderer();
@@ -48,6 +49,9 @@ public class Renderer extends JFrame
 
     public Renderer() {
         super();
+
+        left = false;
+        right = false;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize((int)dim.getWidth(), (int)dim.getHeight());
@@ -72,6 +76,19 @@ public class Renderer extends JFrame
                 mouseX = (int)(MouseInfo.getPointerInfo().getLocation().getX() - getLocation().getX() - 3);
                 mouseY = (int)(MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25);
                 comp.updateMouse(mouseX, mouseY);
+
+                if(left) {
+                    comp.transform(new double[] {1, 0, 0, 5, 
+                                                 0, 1, 0, 0, 
+                                                 0, 0, 1, 0, 
+                                                 0, 0, 0, 1});
+                } else if(right) {
+                    comp.transform(new double[] {1, 0, 0, -5, 
+                                                 0, 1, 0, 0, 
+                                                 0, 0, 1, 0, 
+                                                 0, 0, 0, 1});
+                }
+
                 comp.repaint();
             }
         }
@@ -86,6 +103,13 @@ public class Renderer extends JFrame
             public void keyPressed(KeyEvent e)
             {
                 char c = e.getKeyChar();
+                if(c == 'a' || c == 'A') {
+                    left = true;
+                    right = false;
+                } else if (c == 'd' || c == 'D') {
+                    right = true;
+                    left = false;
+                } 
             }
 
             /**
@@ -96,6 +120,11 @@ public class Renderer extends JFrame
              */
             public void keyReleased(KeyEvent e) {
                 char c = e.getKeyChar();
+                if(c == 'a' || c == 'A') {
+                    left = false;
+                } else if (c == 'd' || c == 'D') {
+                    right = false;
+                } 
             }
 
             /**

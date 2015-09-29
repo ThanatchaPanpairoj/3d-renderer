@@ -24,7 +24,8 @@ public class RendererComponent extends JComponent
         this.height = height;
 
         shapes = new ArrayList<Shape>();
-        shapes.add(new Shape(new Point[] {new Point(200, 200, 200, 1),
+        shapes.add(new Shape(0, 0, 400, new Point[] {
+                                          new Point(200, 200, 200, 1),
                                           new Point(200, -200, 200, 1),
                                           new Point(-200, -200, 200, 1),
                                           new Point(-200, 200, 200, 1),
@@ -55,33 +56,47 @@ public class RendererComponent extends JComponent
 
         for(Shape s : shapes) {
             s.draw(g2);
-            double zSpinAngle = 0.04;
-            s.transform(new double[] {Math.cos(zSpinAngle), Math.sin(zSpinAngle), 0, 0, 
-                                     -Math.sin(zSpinAngle), Math.cos(zSpinAngle), 0, 0, 
-                                                    0,             0,   1, 0,
-                                                    0,             0,   0, 1});
-                                                    
-            s.transform(new double[] {1, 0, 0,    0, 
-                                      0, 1, 0,    0, 
-                                      0, 0, 1, -400, 
-                                      0, 0, 0,    1});
-                             
-            double ySpinAngle = 0.08;
-            s.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
-                                                   0, 1,              0, 0, 
-                                     -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
-                                                   0, 0,              0, 1});
-                                        
-            double xSpinAngle = 0.06;
-            s.transform(new double[] {1,               0,              0, 0, 
+            double xShift = s.getX();
+            double yShift = s.getY();
+            double zShift = s.getZ();
+            
+            s.transform(new double[] {1, 0, 0, -xShift, 
+                                      0, 1, 0, -yShift, 
+                                      0, 0, 1, -zShift, 
+                                      0, 0, 0,         1});
+                                      
+            double xSpinAngle = 0.016;
+            s.transform(new double[] {1,                     0,                    0, 0, 
                                       0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
                                       0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
-                                      0,               0,              0, 1});
+                                      0,                     0,                    0, 1});
+                             
+            double ySpinAngle = 0.008;
+            s.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
+                                                         0, 1,                    0, 0, 
+                                     -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
+                                                         0, 0,                    0, 1});
+                                                         
+            double zSpinAngle = 0.02;
+            s.transform(new double[] {Math.cos(zSpinAngle), Math.sin(zSpinAngle), 0, 0, 
+                                     -Math.sin(zSpinAngle), Math.cos(zSpinAngle), 0, 0, 
+                                                         0,                    0, 1, 0,
+                                                         0,                    0, 0, 1});
                                       
-            s.transform(new double[] {1, 0, 0,   0,
-                                      0, 1, 0,   0, 
-                                      0, 0, 1, 400, 
-                                      0, 0, 0,   1});
+            s.transform(new double[] {1, 0, 0, xShift,
+                                      0, 1, 0, yShift, 
+                                      0, 0, 1, zShift, 
+                                      0, 0, 0,        1});
+        }
+    }
+    
+    public void transform(double[] transformationMatrix) {
+        for(Line l : grid) {
+            l.transform(transformationMatrix);
+        }
+        
+        for(Shape s : shapes) {
+            s.transform(transformationMatrix);
         }
     }
 
