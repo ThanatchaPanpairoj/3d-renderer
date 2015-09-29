@@ -40,8 +40,9 @@ import java.io.IOException;
 
 public class Renderer extends JFrame
 {
-    private int mouseX, mouseY;
-    private boolean left, right;
+    private int mouseX, mouseY, numberOfDirectionsMoving;
+    private boolean left, right, forward, backward;
+    private static final double diagonalMoveSpeed = 10 / Math.sqrt(2);
 
     public static void main(String[] args) {
         Renderer r = new Renderer();
@@ -52,6 +53,10 @@ public class Renderer extends JFrame
 
         left = false;
         right = false;
+        forward = false;
+        backward = false;
+        
+        numberOfDirectionsMoving = 0;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize((int)dim.getWidth(), (int)dim.getHeight());
@@ -77,17 +82,34 @@ public class Renderer extends JFrame
                 mouseY = (int)(MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25);
                 comp.updateMouse(mouseX, mouseY);
 
-                if(left) {
-                    comp.transform(new double[] {1, 0, 0, 5, 
-                                                 0, 1, 0, 0, 
-                                                 0, 0, 1, 0, 
-                                                 0, 0, 0, 1});
-                } else if(right) {
-                    comp.transform(new double[] {1, 0, 0, -5, 
-                                                 0, 1, 0, 0, 
-                                                 0, 0, 1, 0, 
-                                                 0, 0, 0, 1});
+                double speed = 10;
+                if(numberOfDirectionsMoving > 1) {
+                    speed = diagonalMoveSpeed;
                 }
+                
+                if(left && !right) {
+                    comp.transform(new double[] {1, 0, 0, speed, 
+                                                 0, 1, 0,     0, 
+                                                 0, 0, 1,     0, 
+                                                 0, 0, 0,     1});
+                } else if(right && !left) {
+                    comp.transform(new double[] {1, 0, 0, -speed, 
+                                                 0, 1, 0,      0, 
+                                                 0, 0, 1,      0, 
+                                                 0, 0, 0,      1});
+                }
+                
+                if(forward && !backward) {
+                    comp.transform(new double[] {1, 0, 0,      0, 
+                                                 0, 1, 0,      0, 
+                                                 0, 0, 1, -speed, 
+                                                 0, 0, 0,      1});
+                } else if(backward && !forward) {
+                    comp.transform(new double[] {1, 0, 0,     0, 
+                                                 0, 1, 0,     0, 
+                                                 0, 0, 1, speed, 
+                                                 0, 0, 0,     1});
+                } 
 
                 comp.repaint();
             }
@@ -105,10 +127,16 @@ public class Renderer extends JFrame
                 char c = e.getKeyChar();
                 if(c == 'a' || c == 'A') {
                     left = true;
-                    right = false;
+                    numberOfDirectionsMoving++;
                 } else if (c == 'd' || c == 'D') {
                     right = true;
-                    left = false;
+                    numberOfDirectionsMoving++;
+                } else if (c == 'w' || c == 'W') {
+                    forward = true;
+                    numberOfDirectionsMoving++;
+                } else if (c == 's' || c == 'S') {
+                    backward = true;
+                    numberOfDirectionsMoving++;
                 } 
             }
 
@@ -122,8 +150,16 @@ public class Renderer extends JFrame
                 char c = e.getKeyChar();
                 if(c == 'a' || c == 'A') {
                     left = false;
+                    numberOfDirectionsMoving--;
                 } else if (c == 'd' || c == 'D') {
                     right = false;
+                    numberOfDirectionsMoving--;
+                } else if (c == 'w' || c == 'W') {
+                    forward = false;
+                    numberOfDirectionsMoving--;
+                } else if (c == 's' || c == 'S') {
+                    backward = false;
+                    numberOfDirectionsMoving--;
                 } 
             }
 
