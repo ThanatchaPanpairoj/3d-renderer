@@ -55,24 +55,27 @@ public class RendererComponent extends JComponent
 
         for(Shape s : shapes) {
             s.draw(g2);
-            s.transform(new double[] {Math.cos(0.004) * 1.000004, Math.sin(0.004) * 1.000004, 0, 0, 
-                                     -Math.sin(0.004) * 1.000004, Math.cos(0.004) * 1.000004, 0, 0, 
-                                                    0,             0, 1, 0,
-                                                    0,             0, 0, 1});
+            double zSpinAngle = 0.04;
+            s.transform(new double[] {Math.cos(zSpinAngle), Math.sin(zSpinAngle), 0, 0, 
+                                     -Math.sin(zSpinAngle), Math.cos(zSpinAngle), 0, 0, 
+                                                    0,             0,   1, 0,
+                                                    0,             0,   0, 1});
                                                     
             s.transform(new double[] {1, 0, 0,    0, 
                                       0, 1, 0,    0, 
                                       0, 0, 1, -400, 
                                       0, 0, 0,    1});
-                                      
-            s.transform(new double[] {Math.cos(0.008) * 1.000008, 0, Math.sin(0.008) * 1.000008, 0,
+                             
+            double ySpinAngle = 0.08;
+            s.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
                                                    0, 1,              0, 0, 
-                                     -Math.sin(0.008) * 1.000008, 0, Math.cos(0.008) * 1.000008, 0, 
+                                     -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
                                                    0, 0,              0, 1});
-                                                    
+                                        
+            double xSpinAngle = 0.06;
             s.transform(new double[] {1,               0,              0, 0, 
-                                      0,  Math.cos(0.006) * 1.000006, Math.sin(0.006) * 1.000006, 0, 
-                                      0, -Math.sin(0.006) * 1.000006, Math.cos(0.006) * 1.000006, 0, 
+                                      0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
+                                      0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
                                       0,               0,              0, 1});
                                       
             s.transform(new double[] {1, 0, 0,   0,

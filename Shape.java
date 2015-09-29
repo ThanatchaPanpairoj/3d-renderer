@@ -41,54 +41,42 @@ public class Shape
         p1 = new Polygon(new int[] {(int)points[0].get2Dx(), (int)points[1].get2Dx(), (int)points[2].get2Dx(), (int)points[3].get2Dx()},
             new int[] {(int)points[0].get2Dy(), (int)points[1].get2Dy(), (int)points[2].get2Dy(), (int)points[3].get2Dy()},
             4);
-        double closestPointOne = Math.min(Math.min(points[0].getZ(), points[1].getZ()), Math.min(points[2].getZ(), points[3].getZ()));
-        double furtherestPointOne = Math.max(Math.max(points[0].getZ(), points[1].getZ()), Math.max(points[2].getZ(), points[3].getZ()));
 
         p2 = new Polygon(new int[] {(int)points[0].get2Dx(), (int)points[1].get2Dx(), (int)points[5].get2Dx(), (int)points[4].get2Dx()},
             new int[] {(int)points[0].get2Dy(), (int)points[1].get2Dy(), (int)points[5].get2Dy(), (int)points[4].get2Dy()},
             4);
-        double closestPointTwo = Math.min(Math.min(points[0].getZ(), points[1].getZ()), Math.min(points[5].getZ(), points[4].getZ()));
-        double furtherestPointTwo = Math.max(Math.max(points[0].getZ(), points[1].getZ()), Math.max(points[5].getZ(), points[4].getZ()));
 
         p3 = new Polygon(new int[] {(int)points[1].get2Dx(), (int)points[2].get2Dx(), (int)points[6].get2Dx(), (int)points[5].get2Dx()},
             new int[] {(int)points[1].get2Dy(), (int)points[2].get2Dy(), (int)points[6].get2Dy(), (int)points[5].get2Dy()},
             4);
-        double closestPointThree = Math.min(Math.min(points[1].getZ(), points[2].getZ()), Math.min(points[6].getZ(), points[5].getZ()));
-        double furtherestPointThree = Math.max(Math.max(points[1].getZ(), points[2].getZ()), Math.max(points[6].getZ(), points[5].getZ()));
 
         p4 = new Polygon(new int[] {(int)points[2].get2Dx(), (int)points[3].get2Dx(), (int)points[7].get2Dx(), (int)points[6].get2Dx()},
             new int[] {(int)points[2].get2Dy(), (int)points[3].get2Dy(), (int)points[7].get2Dy(), (int)points[6].get2Dy()},
             4);
-        double closestPointFour = Math.min(Math.min(points[2].getZ(), points[3].getZ()), Math.min(points[7].getZ(), points[6].getZ()));
-        double furtherestPointFour = Math.max(Math.max(points[2].getZ(), points[3].getZ()), Math.max(points[7].getZ(), points[6].getZ()));
 
         p5 = new Polygon(new int[] {(int)points[3].get2Dx(), (int)points[0].get2Dx(), (int)points[4].get2Dx(), (int)points[7].get2Dx()},
             new int[] {(int)points[3].get2Dy(), (int)points[0].get2Dy(), (int)points[4].get2Dy(), (int)points[7].get2Dy()},
             4);
-        double closestPointFive = Math.min(Math.min(points[3].getZ(), points[0].getZ()), Math.min(points[4].getZ(), points[7].getZ()));
-        double furtherestPointFive = Math.max(Math.max(points[3].getZ(), points[0].getZ()), Math.max(points[4].getZ(), points[7].getZ()));
 
         p6 = new Polygon(new int[] {(int)points[4].get2Dx(), (int)points[5].get2Dx(), (int)points[6].get2Dx(), (int)points[7].get2Dx()},
             new int[] {(int)points[4].get2Dy(), (int)points[5].get2Dy(), (int)points[6].get2Dy(), (int)points[7].get2Dy()},
             4);
-        double closestPointSix = Math.min(Math.min(points[4].getZ(), points[5].getZ()), Math.min(points[6].getZ(), points[7].getZ()));
-        double furtherestPointSix = Math.max(Math.max(points[4].getZ(), points[5].getZ()), Math.max(points[6].getZ(), points[7].getZ()));
 
         double[] closestPoints = new double[6];
-        closestPoints[0] = closestPointOne;
-        closestPoints[1] = closestPointTwo;
-        closestPoints[2] = closestPointThree;
-        closestPoints[3] = closestPointFour;
-        closestPoints[4] = closestPointFive;
-        closestPoints[5] = closestPointSix;
+        closestPoints[0] = Math.min(Math.min(points[0].getZ(), points[1].getZ()), Math.min(points[2].getZ(), points[3].getZ()));
+        closestPoints[1] = Math.min(Math.min(points[0].getZ(), points[1].getZ()), Math.min(points[5].getZ(), points[4].getZ()));
+        closestPoints[2] = Math.min(Math.min(points[1].getZ(), points[2].getZ()), Math.min(points[6].getZ(), points[5].getZ()));
+        closestPoints[3] = Math.min(Math.min(points[2].getZ(), points[3].getZ()), Math.min(points[7].getZ(), points[6].getZ()));
+        closestPoints[4] = Math.min(Math.min(points[3].getZ(), points[0].getZ()), Math.min(points[4].getZ(), points[7].getZ()));
+        closestPoints[5] = Math.min(Math.min(points[4].getZ(), points[5].getZ()), Math.min(points[6].getZ(), points[7].getZ()));
 
         double[] furtherestPoints = new double[6];
-        furtherestPoints[0] = furtherestPointOne;
-        furtherestPoints[1] = furtherestPointTwo;
-        furtherestPoints[2] = furtherestPointThree;
-        furtherestPoints[3] = furtherestPointFour;
-        furtherestPoints[4] = furtherestPointFive;
-        furtherestPoints[5] = furtherestPointSix;
+        furtherestPoints[0] = Math.max(Math.max(points[0].getZ(), points[1].getZ()), Math.max(points[2].getZ(), points[3].getZ()));
+        furtherestPoints[1] = Math.max(Math.max(points[0].getZ(), points[1].getZ()), Math.max(points[5].getZ(), points[4].getZ()));
+        furtherestPoints[2] = Math.max(Math.max(points[1].getZ(), points[2].getZ()), Math.max(points[6].getZ(), points[5].getZ()));
+        furtherestPoints[3] = Math.max(Math.max(points[2].getZ(), points[3].getZ()), Math.max(points[7].getZ(), points[6].getZ()));
+        furtherestPoints[4] = Math.max(Math.max(points[3].getZ(), points[0].getZ()), Math.max(points[4].getZ(), points[7].getZ()));
+        furtherestPoints[5] = Math.max(Math.max(points[4].getZ(), points[5].getZ()), Math.max(points[6].getZ(), points[7].getZ()));
 
         int closestPointIndex = 0;
         int[] sortedClosestPointIndexes = new int[6];
