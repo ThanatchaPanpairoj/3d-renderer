@@ -22,5 +22,5 @@ Thanatcha Panpairoj
 </ol>
 
 ####USER INSTRUCTIONS: 
-<li>Same as above</li>
+<li>Download main.jar and open it</li>
 
