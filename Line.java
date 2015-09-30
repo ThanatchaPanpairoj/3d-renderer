@@ -40,6 +40,6 @@ public class Line
     }
 
     public Point getPointTwo() {
-        return p2.getZ() >= 0 ? p2 : new Point(p2.getX() + p2.getZ() * (p1.getX() - p2.getX()) / (p2.getZ() - p1.getZ()), p2.getY() + p2.getZ() * (p1.getY() - p2.getY()) / (p2.getZ() - p1.getZ()), 0, 1);
+        return p2.getZ() >= 0 ? p2 : new Point(p1.getX() + p1.getZ() * (p2.getX() - p1.getX()) / (p1.getZ() - p2.getZ()), p1.getY() + p1.getZ() * (p2.getY() - p1.getY()) / (p1.getZ() - p2.getZ()), 0, 1);
     }
 }
