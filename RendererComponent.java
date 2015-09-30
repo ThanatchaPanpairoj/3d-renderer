@@ -46,6 +46,8 @@ public class RendererComponent extends JComponent
         Graphics2D g2 = (Graphics2D)g;
         g2.translate(width / 2, height / 2);
         g2.setColor(Color.BLACK);
+        
+        g2.drawString("ESC to exit", -width / 2 + 5, - height / 2 + 17);
 
         for(Line l : grid) {
             l.draw(g2);
