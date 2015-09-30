@@ -24,7 +24,7 @@ public class Line
         } else if (p1.getZ() >= 0) {
             Point p3 = new Point(p1.getX() + p1.getZ() * (p2.getX() - p1.getX()) / (p1.getZ() - p2.getZ()), p1.getY() + p1.getZ() * (p2.getY() - p1.getY()) / (p1.getZ() - p2.getZ()), 0, 1);
             g2.draw(new Double(p1.get2Dx(), p1.get2Dy(), p3.get2Dx(), p3.get2Dy()));
-        } else if (p2.getZ() > 0) {
+        } else if (p2.getZ() >= 0) {
             Point p3 = new Point(p2.getX() + p2.getZ() * (p1.getX() - p2.getX()) / (p2.getZ() - p1.getZ()), p2.getY() + p2.getZ() * (p1.getY() - p2.getY()) / (p2.getZ() - p1.getZ()), 0, 1);
             g2.draw(new Double(p2.get2Dx(), p2.get2Dy(), p3.get2Dx(), p3.get2Dy()));
         }
@@ -36,10 +36,10 @@ public class Line
     }
 
     public Point getPointOne() {
-        return p1;
+        return p1.getZ() >= 0 ? p1 : new Point(p2.getX() + p2.getZ() * (p1.getX() - p2.getX()) / (p2.getZ() - p1.getZ()), p2.getY() + p2.getZ() * (p1.getY() - p2.getY()) / (p2.getZ() - p1.getZ()), 0, 1);
     }
 
     public Point getPointTwo() {
-        return p2;
+        return p2.getZ() >= 0 ? p2 : new Point(p2.getX() + p2.getZ() * (p1.getX() - p2.getX()) / (p2.getZ() - p1.getZ()), p2.getY() + p2.getZ() * (p1.getY() - p2.getY()) / (p2.getZ() - p1.getZ()), 0, 1);
     }
 }
