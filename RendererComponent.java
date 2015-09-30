@@ -24,15 +24,15 @@ public class RendererComponent extends JComponent
         this.height = height;
 
         shapes = new ArrayList<Shape>();
-        shapes.add(new Shape(0, 0, 400, new Point[] {
-                                          new Point(200, 200, 200, 1),
-                                          new Point(200, -200, 200, 1),
-                                          new Point(-200, -200, 200, 1),
-                                          new Point(-200, 200, 200, 1),
-                                          new Point(200, 200, 600, 1),
-                                          new Point(200, -200, 600, 1),
-                                          new Point(-200, -200, 600, 1),
-                                          new Point(-200, 200, 600, 1)}));
+        shapes.add(new Shape(0, 0, 600, new Point[] {
+                                          new Point(200, 200, 400, 1),
+                                          new Point(200, -200, 400, 1),
+                                          new Point(-200, -200, 400, 1),
+                                          new Point(-200, 200, 400, 1),
+                                          new Point(200, 200, 800, 1),
+                                          new Point(200, -200, 800, 1),
+                                          new Point(-200, -200, 800, 1),
+                                          new Point(-200, 200, 800, 1)}));
                                           
         grid = new ArrayList<Line>();
 
