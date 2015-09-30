@@ -106,7 +106,7 @@ public class Shape
         for(int i = 5; i > -1; i--) {
             fillSide(g2, sortedClosestPointIndexes[i]);
         }
-        
+
         g2.setColor(Color.BLACK);
         for(Line l : closestLines)
             if(l != null)
@@ -139,20 +139,23 @@ public class Shape
         for(Point p : points) {
             p.transform(transformationMatrix);
         } 
-        
-        x += transformationMatrix[3];
-        y += transformationMatrix[7];
-        z += transformationMatrix[11];
+
+        double newX = x * transformationMatrix[0] + y * transformationMatrix[1] + z * transformationMatrix[2] + transformationMatrix[3];
+        double newY = x * transformationMatrix[4] + y * transformationMatrix[5] + z * transformationMatrix[6] + transformationMatrix[7];
+        double newZ = x * transformationMatrix[8] + y * transformationMatrix[9] + z * transformationMatrix[10] + transformationMatrix[11];
+        x = newX;
+        y = newY;
+        z = newZ;
     }
-    
+
     public double getX() {
         return x;
     }
-    
+
     public double getY() {
         return y;
     }
-    
+
     public double getZ() {
         return z;
     }

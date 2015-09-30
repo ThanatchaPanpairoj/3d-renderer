@@ -86,7 +86,7 @@ public class RendererComponent extends JComponent
             s.transform(new double[] {1, 0, 0, xShift,
                                       0, 1, 0, yShift, 
                                       0, 0, 1, zShift, 
-                                      0, 0, 0,        1});
+                                      0, 0, 0,        1});                  
         }
     }
     
