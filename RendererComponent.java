@@ -37,10 +37,8 @@ public class RendererComponent extends JComponent
         grid = new ArrayList<Line>();
 
         for(int w = -10000; w <= 10000; w += 200) {
-            grid.add(new Line(new Point(w, height, 0, 1), new Point(w, height, 10000, 1)));
-            if(w >= 0) {
-                grid.add(new Line(new Point(-10000, height, w, 1), new Point(10000, height, w, 1)));
-            }
+            grid.add(new Line(new Point(w, height, -10000, 1), new Point(w, height, 10000, 1)));
+            grid.add(new Line(new Point(-10000, height, w, 1), new Point(10000, height, w, 1)));
         }
     }
 
@@ -100,7 +98,7 @@ public class RendererComponent extends JComponent
         }
     }
 
-    public void updateMouse(int mouseX, int mouseY) {
+    public void updateMouse(double mouseX, double mouseY) {
         //
     }
 

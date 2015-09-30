@@ -24,6 +24,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Robot;
+import java.awt.image.BufferedImage;
 
 import java.net.URL;
 
@@ -40,22 +42,26 @@ import java.io.IOException;
 
 public class Renderer extends JFrame
 {
-    private int mouseX, mouseY, numberOfDirectionsMoving;
+    private double mouseX, mouseY, numberOfDirectionsMoving;
     private boolean left, right, forward, backward;
-    private static final double diagonalMoveSpeed = 10 / Math.sqrt(2);
+    private static final double diagonalMoveSpeed = 50 / Math.sqrt(2);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Renderer r = new Renderer();
     }
 
-    public Renderer() {
+    public Renderer() throws Exception {
         super();
+
+        setCursor(getToolkit().createCustomCursor(
+                new BufferedImage(3, 3, BufferedImage.TYPE_INT_ARGB), new Point(0, 0),
+                "null"));
 
         left = false;
         right = false;
         forward = false;
         backward = false;
-        
+
         numberOfDirectionsMoving = 0;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -66,6 +72,9 @@ public class Renderer extends JFrame
 
         final int width = this.getWidth();
         final int height = this.getHeight();
+
+        Robot robot = new Robot();
+        robot.mouseMove(width / 2 + 3, height / 2 + 25);
         //System.out.println("" + width + ", " + height);
 
         //         frame.setUndecorated(true);
@@ -78,37 +87,51 @@ public class Renderer extends JFrame
 
         class TimeListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
-                mouseX = (int)(MouseInfo.getPointerInfo().getLocation().getX() - getLocation().getX() - 3);
-                mouseY = (int)(MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25);
+                mouseX = MouseInfo.getPointerInfo().getLocation().getX() - getLocation().getX() - 3;
+                mouseY = MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25;
                 comp.updateMouse(mouseX, mouseY);
 
-                double speed = 10;
+                double xSpinAngle = (height / 2 - mouseY) / 1000;
+                comp.transform(new double[] {1,                     0,                    0, 0, 
+                                             0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
+                                             0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
+                                             0,                     0,                    0, 1});
+
+                double ySpinAngle = (width / 2 - mouseX) / 1000;
+                comp.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
+                                                                0, 1,                    0, 0, 
+                                            -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
+                                                                0, 0,                    0, 1});
+                        
+                robot.mouseMove(width / 2 + 3, height / 2 + 25);
+
+                double speed = 50;
                 if(numberOfDirectionsMoving > 1) {
                     speed = diagonalMoveSpeed;
                 }
-                
+
                 if(left && !right) {
                     comp.transform(new double[] {1, 0, 0, speed, 
-                                                 0, 1, 0,     0, 
-                                                 0, 0, 1,     0, 
-                                                 0, 0, 0,     1});
+                            0, 1, 0,     0, 
+                            0, 0, 1,     0, 
+                            0, 0, 0,     1});
                 } else if(right && !left) {
                     comp.transform(new double[] {1, 0, 0, -speed, 
-                                                 0, 1, 0,      0, 
-                                                 0, 0, 1,      0, 
-                                                 0, 0, 0,      1});
+                            0, 1, 0,      0, 
+                            0, 0, 1,      0, 
+                            0, 0, 0,      1});
                 }
-                
+
                 if(forward && !backward) {
                     comp.transform(new double[] {1, 0, 0,      0, 
-                                                 0, 1, 0,      0, 
-                                                 0, 0, 1, -speed, 
-                                                 0, 0, 0,      1});
+                            0, 1, 0,      0, 
+                            0, 0, 1, -speed, 
+                            0, 0, 0,      1});
                 } else if(backward && !forward) {
                     comp.transform(new double[] {1, 0, 0,     0, 
-                                                 0, 1, 0,     0, 
-                                                 0, 0, 1, speed, 
-                                                 0, 0, 0,     1});
+                            0, 1, 0,     0, 
+                            0, 0, 1, speed, 
+                            0, 0, 0,     1});
                 } 
 
                 comp.repaint();
@@ -124,17 +147,19 @@ public class Renderer extends JFrame
              */
             public void keyPressed(KeyEvent e)
             {
-                char c = e.getKeyChar();
-                if(c == 'a' || c == 'A') {
+                int k = e.getKeyCode();
+                if(k ==  KeyEvent.VK_ESCAPE) {
+                    System.exit(0);
+                } else if(k == KeyEvent.VK_A) {
                     left = true;
                     numberOfDirectionsMoving++;
-                } else if (c == 'd' || c == 'D') {
+                } else if (k == KeyEvent.VK_D) {
                     right = true;
                     numberOfDirectionsMoving++;
-                } else if (c == 'w' || c == 'W') {
+                } else if (k == KeyEvent.VK_W) {
                     forward = true;
                     numberOfDirectionsMoving++;
-                } else if (c == 's' || c == 'S') {
+                } else if (k == KeyEvent.VK_S) {
                     backward = true;
                     numberOfDirectionsMoving++;
                 } 
@@ -147,17 +172,17 @@ public class Renderer extends JFrame
              * @return    void
              */
             public void keyReleased(KeyEvent e) {
-                char c = e.getKeyChar();
-                if(c == 'a' || c == 'A') {
+                int k = e.getKeyCode();
+                if(k == KeyEvent.VK_A) {
                     left = false;
                     numberOfDirectionsMoving--;
-                } else if (c == 'd' || c == 'D') {
+                } else if (k == KeyEvent.VK_D) {
                     right = false;
                     numberOfDirectionsMoving--;
-                } else if (c == 'w' || c == 'W') {
+                } else if (k == KeyEvent.VK_W) {
                     forward = false;
                     numberOfDirectionsMoving--;
-                } else if (c == 's' || c == 'S') {
+                } else if (k == KeyEvent.VK_S) {
                     backward = false;
                     numberOfDirectionsMoving--;
                 } 

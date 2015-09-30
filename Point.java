@@ -7,16 +7,15 @@ import java.awt.Toolkit;
  */
 public class Point
 {
-    private double x, y, z, s, xDepthScale, yDepthScale;
-    private static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth(), HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight(), halfWidth = WIDTH / 2, halfHeight = HEIGHT / 2;
+    private double x, y, z, s, depthScale;
+    private static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth(), HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
 
     public Point(double x, double y, double z, double s) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.s = s;
-        xDepthScale = (halfWidth - z * (halfWidth / (2 * WIDTH + z))) / halfWidth;
-        yDepthScale = (halfHeight - z * (halfHeight / (2 * WIDTH + z))) / halfHeight;
+        depthScale = 2 * WIDTH / (2 * WIDTH + z);
     }
 
     public void transform(double[] transformationMatrix) {
@@ -28,16 +27,15 @@ public class Point
         y = newY;
         z = newZ;
         s = newS;
-        xDepthScale = (halfWidth - z * (halfWidth / (2 * WIDTH + z))) / halfWidth;
-        yDepthScale = (halfHeight - z * (halfHeight / (2 * WIDTH + z))) / halfHeight;
+        depthScale = 2 * WIDTH / (2 * WIDTH + z);
     }
 
     public double get2Dx() {
-        return s * x * xDepthScale;
+        return s * x * depthScale;
     }
 
     public double get2Dy() {
-        return s * y * yDepthScale;
+        return s * y * depthScale;
     }
 
     public double getX() {
