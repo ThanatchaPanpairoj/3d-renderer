@@ -47,33 +47,8 @@ public class Cube extends Shape
     }
 
     public Cube(Color c, double radius, double x, double y, double z) {
+        this(radius, x, y, z);
         this.c = c;
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.points = new Point[] {
-            new Point(x + radius, y + radius, z - radius, 1),
-            new Point(x + radius, y - radius, z - radius, 1),
-            new Point(x - radius, y - radius, z - radius, 1),
-            new Point(x - radius, y + radius, z - radius, 1),
-            new Point(x + radius, y + radius, z + radius, 1),
-            new Point(x + radius, y - radius, z + radius, 1),
-            new Point(x - radius, y - radius, z + radius, 1),
-            new Point(x - radius, y + radius, z + radius, 1)};
-
-        lines = new Line[12];
-        lines[0] = new Line(points[0], points[1]); 
-        lines[1] = new Line(points[1], points[2]); 
-        lines[2] = new Line(points[2], points[3]); 
-        lines[3] = new Line(points[3], points[0]); 
-        lines[4] = new Line(points[4], points[5]); 
-        lines[5] = new Line(points[5], points[6]); 
-        lines[6] = new Line(points[6], points[7]); 
-        lines[7] = new Line(points[7], points[4]); 
-        lines[8] = new Line(points[0], points[4]); 
-        lines[9] = new Line(points[1], points[5]); 
-        lines[10] = new Line(points[2], points[6]); 
-        lines[11] = new Line(points[3], points[7]);
     }
 
     public void draw(Graphics2D g2) {
@@ -216,18 +191,10 @@ public class Cube extends Shape
 
             int closestPointIndex = 0;
             int[] sortedClosestPointIndexes = new int[6];
-            Line[] closestLines = new Line[8];
             for(int i = 0, closestLineIndex = 0; i < 6; i++) {
                 for(int j = 0; j < 6; j++) {
                     if(closestPoints[j] < closestPoints[closestPointIndex] - 0.01 || (closestPoints[j] - 0.01 < closestPoints[closestPointIndex] && furtherestPoints[j] < furtherestPoints[closestPointIndex])) {
                         closestPointIndex = j;
-                    }
-                }
-                if(i == 0) {
-                    for(Line l : lines) {
-                        if(l.getPointOne().getZ() - closestPoints[closestPointIndex] < 0.1 || l.getPointTwo().getZ() - closestPoints[closestPointIndex] < 0.01) {
-                            closestLines[closestLineIndex++] = l;
-                        }
                     }
                 }
                 sortedClosestPointIndexes[i] = closestPointIndex;
@@ -238,13 +205,6 @@ public class Cube extends Shape
             for(int i = 5; i > -1; i--) {
                 fillSide(g2, sortedClosestPointIndexes[i]);
             }
-
-            g2.setColor(Color.BLACK);
-            for(Line l : closestLines) {
-                if(l != null) {
-                    l.draw(g2);
-                }
-            }
         }
     }
 
@@ -252,21 +212,50 @@ public class Cube extends Shape
         if(side == 0) {
             g2.setColor(c != null ? c : Color.BLUE);
             g2.fillPolygon(p1);
+            g2.setColor(Color.BLACK);
+            lines[0].draw(g2);
+            lines[1].draw(g2);
+            lines[2].draw(g2);
+            lines[3].draw(g2);
         } else if(side == 1) {
             g2.setColor(c != null ? c : Color.GREEN);
             g2.fillPolygon(p2);
+            g2.setColor(Color.BLACK);
+            lines[0].draw(g2);
+            lines[9].draw(g2);
+            lines[4].draw(g2);
+            lines[8].draw(g2);
         } else if(side == 2) {
             g2.setColor(c != null ? c : Color.RED);
             g2.fillPolygon(p3);
+            g2.setColor(Color.BLACK);
+            lines[1].draw(g2);
+            lines[10].draw(g2);
+            lines[5].draw(g2);
+            lines[9].draw(g2);
         } else if(side == 3) {
             g2.setColor(c != null ? c : Color.YELLOW);
             g2.fillPolygon(p4);
+            g2.setColor(Color.BLACK);
+            lines[2].draw(g2);
+            lines[11].draw(g2);
+            lines[6].draw(g2);
+            lines[10].draw(g2);
         } else if(side == 4) {
             g2.setColor(c != null ? c : Color.CYAN);
             g2.fillPolygon(p5);
+            g2.setColor(Color.BLACK);
+            lines[3].draw(g2);
+            lines[8].draw(g2);
+            lines[7].draw(g2);
+            lines[11].draw(g2);
         } else {
             g2.setColor(c != null ? c : Color.ORANGE);
             g2.fillPolygon(p6);
+            lines[4].draw(g2);
+            lines[5].draw(g2);
+            lines[6].draw(g2);
+            lines[7].draw(g2);
         }
     } 
 
