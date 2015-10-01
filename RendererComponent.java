@@ -26,6 +26,7 @@ public class RendererComponent extends JComponent
 
         shapes = new ArrayList<Shape>();
         shapes.add(firstCube = new Cube(200, 0, 0, 800));
+
         shapes.add(new Cube(200, -3400, height  / 2 + 200,  1800));
         shapes.add(new Cube(200, -3400, height  / 2 + 200,  2200));
         shapes.add(new Cube(200, -3400, height  / 2 + 200,  2600));
@@ -39,6 +40,34 @@ public class RendererComponent extends JComponent
         shapes.add(new Cube(200, -5000, height  / 2 + 200, 2600));
         shapes.add(new Cube(200, -5000, height  / 2 + 200, 2200));
         shapes.add(new Cube(200, -5000, height  / 2 + 200, 1800));
+
+        shapes.add(new Cube(200, -3400, height  / 2 - 200,  1800));
+        shapes.add(new Cube(200, -3400, height  / 2 - 200,  2200));
+        shapes.add(new Cube(200, -3400, height  / 2 - 200,  2600));
+        shapes.add(new Cube(200, -3400, height  / 2 - 200,  3000));
+        shapes.add(new Cube(200, -3400, height  / 2 - 200,  3400));
+        shapes.add(new Cube(200, -3800, height  / 2 - 200,  3400));
+        shapes.add(new Cube(200, -4200, height  / 2 - 200,  3400));
+        shapes.add(new Cube(200, -4600, height  / 2 - 200,  3400));
+        shapes.add(new Cube(200, -5000, height  / 2 - 200,  3400));
+        shapes.add(new Cube(200, -5000, height  / 2 - 200,  3000));
+        shapes.add(new Cube(200, -5000, height  / 2 - 200, 2600));
+        shapes.add(new Cube(200, -5000, height  / 2 - 200, 2200));
+        shapes.add(new Cube(200, -5000, height  / 2 - 200, 1800));
+
+        shapes.add(new Cube(200, -3400, height  / 2 - 600,  1800));
+        shapes.add(new Cube(200, -3400, height  / 2 - 600,  2200));
+        shapes.add(new Cube(200, -3400, height  / 2 - 600,  2600));
+        shapes.add(new Cube(200, -3400, height  / 2 - 600,  3000));
+        shapes.add(new Cube(200, -3400, height  / 2 - 600,  3400));
+        shapes.add(new Cube(200, -3800, height  / 2 - 600,  3400));
+        shapes.add(new Cube(200, -4200, height  / 2 - 600,  3400));
+        shapes.add(new Cube(200, -4600, height  / 2 - 600,  3400));
+        shapes.add(new Cube(200, -5000, height  / 2 - 600,  3400));
+        shapes.add(new Cube(200, -5000, height  / 2 - 600,  3000));
+        shapes.add(new Cube(200, -5000, height  / 2 - 600, 2600));
+        shapes.add(new Cube(200, -5000, height  / 2 - 600, 2200));
+        shapes.add(new Cube(200, -5000, height  / 2 - 600, 1800));
 
         grid = new ArrayList<Line>();
         for(int w = -100000; w <= 100000; w += 400) {
@@ -61,7 +90,7 @@ public class RendererComponent extends JComponent
         }
 
         shapes.sort(new DistanceComparator());
-        
+
         for(Shape s : shapes) {
             s.draw(g2);
             double xShift = s.getX();
