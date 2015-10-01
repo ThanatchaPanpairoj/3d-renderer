@@ -44,7 +44,7 @@ public class Renderer extends JFrame
 {
     private double mouseX, mouseY, numberOfDirectionsMoving, xRotation;
     private boolean left, right, forward, backward;
-    private static final double diagonalMoveSpeed = 50 / Math.sqrt(2);
+    private static final double diagonalMoveSpeed = 100 / Math.sqrt(2);
 
     public static void main(String[] args) throws Exception {
         Renderer r = new Renderer();
@@ -97,13 +97,13 @@ public class Renderer extends JFrame
                         0, -Math.sin(-xRotation), Math.cos(-xRotation), 0, 
                         0,                     0,                    0, 1});
 
-                double ySpinAngle = (width / 2 - mouseX) / 500;
+                double ySpinAngle = (width / 2 - mouseX) / 400;
                 comp.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
                         0, 1,                    0, 0, 
                         -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
                         0, 0,                    0, 1});
 
-                double speed = 50;
+                double speed = 100;
                 if(numberOfDirectionsMoving > 1) {
                     speed = diagonalMoveSpeed;
                 }
@@ -137,7 +137,7 @@ public class Renderer extends JFrame
                         0, -Math.sin(xRotation), Math.cos(xRotation), 0, 
                         0,                     0,                  0, 1});
 
-                double xSpinAngle = (height / 2 - mouseY) / 500;
+                double xSpinAngle = (height / 2 - mouseY) / 400;
                 if(xRotation + xSpinAngle < Math.PI / 2 && xRotation + xSpinAngle > -Math.PI / 2) {
                     comp.transform(new double[] {1,                     0,                    0, 0, 
                             0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 

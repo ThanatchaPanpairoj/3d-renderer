@@ -36,16 +36,16 @@ public class RendererComponent extends JComponent
                                           
         grid = new ArrayList<Line>();
 
-        for(int w = -10000; w <= 10000; w += 200) {
-            grid.add(new Line(new Point(w, height, -10000, 1), new Point(w, height, 10000, 1)));
-            grid.add(new Line(new Point(-10000, height, w, 1), new Point(10000, height, w, 1)));
+        for(int w = -100000; w <= 100000; w += 200) {
+            grid.add(new Line(new Point(w, height, -100000, 1), new Point(w, height, 100000, 1)));
+            grid.add(new Line(new Point(-100000, height, w, 1), new Point(100000, height, w, 1)));
         }
     }
 
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         g2.translate(width / 2, height / 2);
-        g2.setColor(Color.BLACK);
+        g2.setColor(Color.GRAY);
         
         g2.drawString("ESC to exit", -width / 2 + 5, - height / 2 + 17);
 
