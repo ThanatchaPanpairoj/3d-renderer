@@ -104,7 +104,7 @@ public class Renderer extends JFrame
                         0, 0,                    0, 1});
 
                 double speed = 100;
-                if(numberOfDirectionsMoving > 1) {
+                if(numberOfDirectionsMoving > 1 && numberOfDirectionsMoving < 3) {
                     speed = diagonalMoveSpeed;
                 }
 
@@ -166,17 +166,21 @@ public class Renderer extends JFrame
                 if(k ==  KeyEvent.VK_ESCAPE) {
                     System.exit(0);
                 } else if(k == KeyEvent.VK_A) {
+                    if(!left)
+                        numberOfDirectionsMoving++;
                     left = true;
-                    numberOfDirectionsMoving++;
                 } else if (k == KeyEvent.VK_D) {
+                    if(!right)
+                        numberOfDirectionsMoving++;
                     right = true;
-                    numberOfDirectionsMoving++;
                 } else if (k == KeyEvent.VK_W) {
+                    if(!forward)
+                        numberOfDirectionsMoving++;
                     forward = true;
-                    numberOfDirectionsMoving++;
                 } else if (k == KeyEvent.VK_S) {
+                    if(!backward)
+                        numberOfDirectionsMoving++;
                     backward = true;
-                    numberOfDirectionsMoving++;
                 } 
             }
 
