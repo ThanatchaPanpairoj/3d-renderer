@@ -252,6 +252,7 @@ public class Cube extends Shape
         } else {
             g2.setColor(c != null ? c : Color.ORANGE);
             g2.fillPolygon(p6);
+            g2.setColor(Color.BLACK);
             lines[4].draw(g2);
             lines[5].draw(g2);
             lines[6].draw(g2);
