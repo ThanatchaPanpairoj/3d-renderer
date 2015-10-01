@@ -27,19 +27,19 @@ public class RendererComponent extends JComponent
         shapes = new ArrayList<Shape>();
         shapes.add(firstCube = new Cube(200, 0, 0, 800));
 
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 200,  1800));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 200,  2200));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 200,  2600));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 200,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 200,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -3800, height  / 2 + 200,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4200, height  / 2 + 200,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4600, height  / 2 + 200,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 200,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 200,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 200, 2600));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 200, 2200));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 200, 1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  2200));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  2600));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -3800, height  / 2 + 185,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4200, height  / 2 + 185,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4600, height  / 2 + 185,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185, 2600));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185, 2200));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185, 1800));
 
         shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 200,  1800));
         shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 200,  2200));
