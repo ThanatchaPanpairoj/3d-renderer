@@ -11,6 +11,7 @@ import java.awt.BasicStroke;
  */
 public class Cube extends Shape
 {
+    private Color c;
     private Line[] lines;
     private Point[] points;
     private Polygon p1, p2, p3, p4, p5, p6;
@@ -21,14 +22,44 @@ public class Cube extends Shape
         this.y = y;
         this.z = z;
         this.points = new Point[] {
-                    new Point(x + radius, y + radius, z - radius, 1),
-                    new Point(x + radius, y - radius, z - radius, 1),
-                    new Point(x - radius, y - radius, z - radius, 1),
-                    new Point(x - radius, y + radius, z - radius, 1),
-                    new Point(x + radius, y + radius, z + radius, 1),
-                    new Point(x + radius, y - radius, z + radius, 1),
-                    new Point(x - radius, y - radius, z + radius, 1),
-                    new Point(x - radius, y + radius, z + radius, 1)};
+            new Point(x + radius, y + radius, z - radius, 1),
+            new Point(x + radius, y - radius, z - radius, 1),
+            new Point(x - radius, y - radius, z - radius, 1),
+            new Point(x - radius, y + radius, z - radius, 1),
+            new Point(x + radius, y + radius, z + radius, 1),
+            new Point(x + radius, y - radius, z + radius, 1),
+            new Point(x - radius, y - radius, z + radius, 1),
+            new Point(x - radius, y + radius, z + radius, 1)};
+
+        lines = new Line[12];
+        lines[0] = new Line(points[0], points[1]); 
+        lines[1] = new Line(points[1], points[2]); 
+        lines[2] = new Line(points[2], points[3]); 
+        lines[3] = new Line(points[3], points[0]); 
+        lines[4] = new Line(points[4], points[5]); 
+        lines[5] = new Line(points[5], points[6]); 
+        lines[6] = new Line(points[6], points[7]); 
+        lines[7] = new Line(points[7], points[4]); 
+        lines[8] = new Line(points[0], points[4]); 
+        lines[9] = new Line(points[1], points[5]); 
+        lines[10] = new Line(points[2], points[6]); 
+        lines[11] = new Line(points[3], points[7]);
+    }
+
+    public Cube(Color c, double radius, double x, double y, double z) {
+        this.c = c;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.points = new Point[] {
+            new Point(x + radius, y + radius, z - radius, 1),
+            new Point(x + radius, y - radius, z - radius, 1),
+            new Point(x - radius, y - radius, z - radius, 1),
+            new Point(x - radius, y + radius, z - radius, 1),
+            new Point(x + radius, y + radius, z + radius, 1),
+            new Point(x + radius, y - radius, z + radius, 1),
+            new Point(x - radius, y - radius, z + radius, 1),
+            new Point(x - radius, y + radius, z + radius, 1)};
 
         lines = new Line[12];
         lines[0] = new Line(points[0], points[1]); 
@@ -219,22 +250,22 @@ public class Cube extends Shape
 
     public void fillSide(Graphics2D g2, int side) {
         if(side == 0) {
-            g2.setColor(Color.BLUE);
+            g2.setColor(c != null ? c : Color.BLUE);
             g2.fillPolygon(p1);
         } else if(side == 1) {
-            g2.setColor(Color.GREEN);
+            g2.setColor(c != null ? c : Color.GREEN);
             g2.fillPolygon(p2);
         } else if(side == 2) {
-            g2.setColor(Color.RED);
+            g2.setColor(c != null ? c : Color.RED);
             g2.fillPolygon(p3);
         } else if(side == 3) {
-            g2.setColor(Color.YELLOW);
+            g2.setColor(c != null ? c : Color.YELLOW);
             g2.fillPolygon(p4);
         } else if(side == 4) {
-            g2.setColor(Color.CYAN);
+            g2.setColor(c != null ? c : Color.CYAN);
             g2.fillPolygon(p5);
         } else {
-            g2.setColor(Color.ORANGE);
+            g2.setColor(c != null ? c : Color.ORANGE);
             g2.fillPolygon(p6);
         }
     } 
