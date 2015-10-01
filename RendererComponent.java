@@ -24,7 +24,7 @@ public class RendererComponent extends JComponent
         this.height = height;
 
         shapes = new ArrayList<Shape>();
-        shapes.add(new Shape(0, 0, 800, new Point[] {
+        shapes.add(new Cube(0, 0, 800, new Point[] {
                                           new Point(200, 200, 600, 1),
                                           new Point(200, -200, 600, 1),
                                           new Point(-200, -200, 600, 1),

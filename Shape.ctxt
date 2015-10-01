@@ -1,16 +1,14 @@
 #BlueJ class context
-comment0.params=x\ y\ z\ points
-comment0.target=Shape(double,\ double,\ double,\ Point[])
-comment1.params=g2
-comment1.target=void\ draw(java.awt.Graphics2D)
-comment2.params=g2\ side
-comment2.target=void\ fillSide(java.awt.Graphics2D,\ int)
-comment3.params=transformationMatrix
-comment3.target=void\ transform(double[])
+comment0.params=g2
+comment0.target=void\ draw(java.awt.Graphics2D)
+comment1.params=g2\ side
+comment1.target=void\ fillSide(java.awt.Graphics2D,\ int)
+comment2.params=transformationMatrix
+comment2.target=void\ transform(double[])
+comment3.params=
+comment3.target=double\ getX()
 comment4.params=
-comment4.target=double\ getX()
+comment4.target=double\ getY()
 comment5.params=
-comment5.target=double\ getY()
-comment6.params=
-comment6.target=double\ getZ()
-numComments=7
+comment5.target=double\ getZ()
+numComments=6
