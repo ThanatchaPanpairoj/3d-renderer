@@ -1,4 +1,4 @@
-#3-D World Drawer
+#3D World Drawer
 Displays and animates shapes with x, y and z coordinates using 4-d transformation matrixies
 <br>
 ![ScreenShot](http://imgur.com/pJFMEE9.png)
