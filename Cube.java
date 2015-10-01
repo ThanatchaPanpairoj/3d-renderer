@@ -177,7 +177,7 @@ public class Cube extends Shape
 
             int closestPointIndex = 0;
             int[] sortedClosestPointIndexes = new int[6];
-            Line[] closestLines = new Line[3];
+            Line[] closestLines = new Line[8];
             for(int i = 0, closestLineIndex = 0; i < 6; i++) {
                 for(int j = 0; j < 6; j++) {
                     if(closestPoints[j] < closestPoints[closestPointIndex] - 0.01 || (closestPoints[j] - 0.01 < closestPoints[closestPointIndex] && furtherestPoints[j] < furtherestPoints[closestPointIndex])) {
@@ -187,7 +187,7 @@ public class Cube extends Shape
                 if(i == 0) {
                     for(Line l : lines) {
                         if(l.getPointOne().getZ() - closestPoints[closestPointIndex] < 0.1 || l.getPointTwo().getZ() - closestPoints[closestPointIndex] < 0.01) {
-                            closestLines[closestLineIndex] = l;
+                            closestLines[closestLineIndex++] = l;
                         }
                     }
                 }
