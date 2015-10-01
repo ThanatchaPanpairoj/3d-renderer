@@ -25,15 +25,15 @@ public class RendererComponent extends JComponent
 
         shapes = new ArrayList<Shape>();
         shapes.add(new Cube(0, 0, 800, new Point[] {
-                                          new Point(200, 200, 600, 1),
-                                          new Point(200, -200, 600, 1),
-                                          new Point(-200, -200, 600, 1),
-                                          new Point(-200, 200, 600, 1),
-                                          new Point(200, 200, 1000, 1),
-                                          new Point(200, -200, 1000, 1),
-                                          new Point(-200, -200, 1000, 1),
-                                          new Point(-200, 200, 1000, 1)}));
-                                          
+                    new Point(200, 200, 600, 1),
+                    new Point(200, -200, 600, 1),
+                    new Point(-200, -200, 600, 1),
+                    new Point(-200, 200, 600, 1),
+                    new Point(200, 200, 1000, 1),
+                    new Point(200, -200, 1000, 1),
+                    new Point(-200, -200, 1000, 1),
+                    new Point(-200, 200, 1000, 1)}));
+
         grid = new ArrayList<Line>();
 
         for(int w = -100000; w <= 100000; w += 400) {
@@ -46,55 +46,56 @@ public class RendererComponent extends JComponent
         Graphics2D g2 = (Graphics2D)g;
         g2.translate(width / 2, height / 2);
         g2.setColor(Color.GRAY);
-        
-        g2.drawString("ESC to exit", -width / 2 + 5, - height / 2 + 17);
+
+        g2.drawString("WASD to move", -width / 2 + 5, - height / 2 + 17);
+        g2.drawString("Mouse to turn", -width / 2 + 5, - height / 2 + 34);
+        g2.drawString("ESC to exit", -width / 2 + 5, - height / 2 + 51);
 
         for(Line l : grid) {
             l.draw(g2);
         }
-
 
         for(Shape s : shapes) {
             s.draw(g2);
             double xShift = s.getX();
             double yShift = s.getY();
             double zShift = s.getZ();
-            
+
             s.transform(new double[] {1, 0, 0, -xShift, 
-                                      0, 1, 0, -yShift, 
-                                      0, 0, 1, -zShift, 
-                                      0, 0, 0,         1});
-                                      
+                    0, 1, 0, -yShift, 
+                    0, 0, 1, -zShift, 
+                    0, 0, 0,         1});
+
             double xSpinAngle = 0.016;
             s.transform(new double[] {1,                     0,                    0, 0, 
-                                      0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
-                                      0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
-                                      0,                     0,                    0, 1});
-                             
+                    0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
+                    0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
+                    0,                     0,                    0, 1});
+
             double ySpinAngle = 0.008;
             s.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
-                                                         0, 1,                    0, 0, 
-                                     -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
-                                                         0, 0,                    0, 1});
-                                                         
+                    0, 1,                    0, 0, 
+                    -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
+                    0, 0,                    0, 1});
+
             double zSpinAngle = 0.02;
             s.transform(new double[] {Math.cos(zSpinAngle), Math.sin(zSpinAngle), 0, 0, 
-                                     -Math.sin(zSpinAngle), Math.cos(zSpinAngle), 0, 0, 
-                                                         0,                    0, 1, 0,
-                                                         0,                    0, 0, 1});
-                                      
+                    -Math.sin(zSpinAngle), Math.cos(zSpinAngle), 0, 0, 
+                    0,                    0, 1, 0,
+                    0,                    0, 0, 1});
+
             s.transform(new double[] {1, 0, 0, xShift,
-                                      0, 1, 0, yShift, 
-                                      0, 0, 1, zShift, 
-                                      0, 0, 0,        1});                  
+                    0, 1, 0, yShift, 
+                    0, 0, 1, zShift, 
+                    0, 0, 0,        1});                  
         }
     }
-    
+
     public void transform(double[] transformationMatrix) {
         for(Line l : grid) {
             l.transform(transformationMatrix);
         }
-        
+
         for(Shape s : shapes) {
             s.transform(transformationMatrix);
         }
