@@ -17,6 +17,7 @@ public class RendererComponent extends JComponent
 {
     private int width, height;
     private ArrayList<Shape> shapes;
+    private Shape firstCube;
     private ArrayList<Line> grid;
 
     public RendererComponent(int width, int height) {
@@ -24,18 +25,22 @@ public class RendererComponent extends JComponent
         this.height = height;
 
         shapes = new ArrayList<Shape>();
-        shapes.add(new Cube(0, 0, 800, new Point[] {
-                    new Point(200, 200, 600, 1),
-                    new Point(200, -200, 600, 1),
-                    new Point(-200, -200, 600, 1),
-                    new Point(-200, 200, 600, 1),
-                    new Point(200, 200, 1000, 1),
-                    new Point(200, -200, 1000, 1),
-                    new Point(-200, -200, 1000, 1),
-                    new Point(-200, 200, 1000, 1)}));
+        shapes.add(firstCube = new Cube(200, 0, 0, 800));
+        shapes.add(new Cube(200, -3400, height  / 2 + 200,  1800));
+        shapes.add(new Cube(200, -3400, height  / 2 + 200,  2200));
+        shapes.add(new Cube(200, -3400, height  / 2 + 200,  2600));
+        shapes.add(new Cube(200, -3400, height  / 2 + 200,  3000));
+        shapes.add(new Cube(200, -3400, height  / 2 + 200,  3400));
+        shapes.add(new Cube(200, -3800, height  / 2 + 200,  3400));
+        shapes.add(new Cube(200, -4200, height  / 2 + 200,  3400));
+        shapes.add(new Cube(200, -4600, height  / 2 + 200,  3400));
+        shapes.add(new Cube(200, -5000, height  / 2 + 200,  3400));
+        shapes.add(new Cube(200, -5000, height  / 2 + 200,  3000));
+        shapes.add(new Cube(200, -5000, height  / 2 + 200, 2600));
+        shapes.add(new Cube(200, -5000, height  / 2 + 200, 2200));
+        shapes.add(new Cube(200, -5000, height  / 2 + 200, 1800));
 
         grid = new ArrayList<Line>();
-
         for(int w = -100000; w <= 100000; w += 400) {
             grid.add(new Line(new Point(w, height, -100000, 1), new Point(w, height, 100000, 1)));
             grid.add(new Line(new Point(-100000, height, w, 1), new Point(100000, height, w, 1)));
@@ -55,39 +60,43 @@ public class RendererComponent extends JComponent
             l.draw(g2);
         }
 
+        shapes.sort(new DistanceComparator());
+        
         for(Shape s : shapes) {
             s.draw(g2);
             double xShift = s.getX();
             double yShift = s.getY();
             double zShift = s.getZ();
 
-            s.transform(new double[] {1, 0, 0, -xShift, 
-                    0, 1, 0, -yShift, 
-                    0, 0, 1, -zShift, 
-                    0, 0, 0,         1});
+            if(s == firstCube) { 
+                s.transform(new double[] {1, 0, 0, -xShift, 
+                        0, 1, 0, -yShift, 
+                        0, 0, 1, -zShift, 
+                        0, 0, 0,         1});
 
-            double xSpinAngle = 0.016;
-            s.transform(new double[] {1,                     0,                    0, 0, 
-                    0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
-                    0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
-                    0,                     0,                    0, 1});
+                double xSpinAngle = 0.016;
+                s.transform(new double[] {1,                     0,                    0, 0, 
+                        0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
+                        0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
+                        0,                     0,                    0, 1});
 
-            double ySpinAngle = 0.008;
-            s.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
-                    0, 1,                    0, 0, 
-                    -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
-                    0, 0,                    0, 1});
+                double ySpinAngle = 0.008;
+                s.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
+                        0, 1,                    0, 0, 
+                        -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
+                        0, 0,                    0, 1});
 
-            double zSpinAngle = 0.02;
-            s.transform(new double[] {Math.cos(zSpinAngle), Math.sin(zSpinAngle), 0, 0, 
-                    -Math.sin(zSpinAngle), Math.cos(zSpinAngle), 0, 0, 
-                    0,                    0, 1, 0,
-                    0,                    0, 0, 1});
+                double zSpinAngle = 0.02;
+                s.transform(new double[] {Math.cos(zSpinAngle), Math.sin(zSpinAngle), 0, 0, 
+                        -Math.sin(zSpinAngle), Math.cos(zSpinAngle), 0, 0, 
+                        0,                    0, 1, 0,
+                        0,                    0, 0, 1});
 
-            s.transform(new double[] {1, 0, 0, xShift,
-                    0, 1, 0, yShift, 
-                    0, 0, 1, zShift, 
-                    0, 0, 0,        1});                  
+                s.transform(new double[] {1, 0, 0, xShift,
+                        0, 1, 0, yShift, 
+                        0, 0, 1, zShift, 
+                        0, 0, 0,        1});         
+            }
         }
     }
 

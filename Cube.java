@@ -16,11 +16,19 @@ public class Cube extends Shape
     private Polygon p1, p2, p3, p4, p5, p6;
     private double x, y, z;
 
-    public Cube(double x, double y, double z, Point[] points) {
+    public Cube(double radius, double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.points = points;
+        this.points = new Point[] {
+                    new Point(x + radius, y + radius, z - radius, 1),
+                    new Point(x + radius, y - radius, z - radius, 1),
+                    new Point(x - radius, y - radius, z - radius, 1),
+                    new Point(x - radius, y + radius, z - radius, 1),
+                    new Point(x + radius, y + radius, z + radius, 1),
+                    new Point(x + radius, y - radius, z + radius, 1),
+                    new Point(x - radius, y - radius, z + radius, 1),
+                    new Point(x - radius, y + radius, z + radius, 1)};
 
         lines = new Line[12];
         lines[0] = new Line(points[0], points[1]); 
