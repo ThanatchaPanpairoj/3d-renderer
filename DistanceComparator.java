@@ -9,6 +9,7 @@ import java.util.Comparator;
 public class DistanceComparator implements Comparator<Shape>
 {
     public int compare(Shape s1, Shape s2) {
-        return (int)s2.getZ() - (int)s1.getZ();
+        return (int)Math.sqrt(Math.pow(s2.getX(), 2) + Math.pow(s1.getY(), 2) + Math.pow(s2.getZ(), 2))
+        - (int)Math.sqrt(Math.pow(s1.getX(), 2) + Math.pow(s1.getY(), 2) + Math.pow(s1.getZ(), 2));
     }
 }

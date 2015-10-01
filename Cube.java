@@ -15,9 +15,10 @@ public class Cube extends Shape
     private Line[] lines;
     private Point[] points;
     private Polygon p1, p2, p3, p4, p5, p6;
-    private double x, y, z;
+    private double radius, x, y, z;
 
     public Cube(double radius, double x, double y, double z) {
+        this.radius = radius;
         this.x = x;
         this.y = y;
         this.z = z;
@@ -283,5 +284,9 @@ public class Cube extends Shape
 
     public double getZ() {
         return z;
+    }
+    
+    public double getR() {
+        return radius;
     }
 }

@@ -19,4 +19,6 @@ public abstract class Shape
     public abstract double getY();
 
     public abstract double getZ();
+    
+    public abstract double getR();
 }

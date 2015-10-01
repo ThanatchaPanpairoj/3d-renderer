@@ -15,4 +15,6 @@ comment6.params=
 comment6.target=double\ getY()
 comment7.params=
 comment7.target=double\ getZ()
-numComments=8
+comment8.params=
+comment8.target=double\ getR()
+numComments=9

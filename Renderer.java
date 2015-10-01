@@ -92,6 +92,13 @@ public class Renderer extends JFrame
                 mouseY = MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25;
                 comp.updateMouse(mouseX, mouseY);
 
+                double speed = 100;
+                if(numberOfDirectionsMoving > 1 && numberOfDirectionsMoving < 3) {
+                    speed = diagonalMoveSpeed;
+                }
+                Shape closestShape = comp.getClosestShape();
+                boolean notBlocked = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  closestShape.getZ() - speed > closestShape.getR() * Math.sqrt(2));
+
                 comp.transform(new double[] {1,                     0,                    0, 0, 
                         0,  Math.cos(-xRotation), Math.sin(-xRotation), 0, 
                         0, -Math.sin(-xRotation), Math.cos(-xRotation), 0, 
@@ -102,11 +109,6 @@ public class Renderer extends JFrame
                         0, 1,                    0, 0, 
                         -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
                         0, 0,                    0, 1});
-
-                double speed = 100;
-                if(numberOfDirectionsMoving > 1 && numberOfDirectionsMoving < 3) {
-                    speed = diagonalMoveSpeed;
-                }
 
                 if(left && !right) {
                     comp.transform(new double[] {1, 0, 0, speed, 
@@ -120,7 +122,7 @@ public class Renderer extends JFrame
                             0, 0, 0,      1});
                 }
 
-                if(forward && !backward) {
+                if(forward && !backward && notBlocked) {
                     comp.transform(new double[] {1, 0, 0,      0, 
                             0, 1, 0,      0, 
                             0, 0, 1, -speed, 

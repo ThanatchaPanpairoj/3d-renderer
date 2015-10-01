@@ -9,4 +9,6 @@ comment3.params=mouseX\ mouseY
 comment3.target=void\ updateMouse(double,\ double)
 comment4.params=
 comment4.target=void\ click()
-numComments=5
+comment5.params=
+comment5.target=Shape\ getClosestShape()
+numComments=6

@@ -146,4 +146,8 @@ public class RendererComponent extends JComponent
     public void click() {
         //
     }
+       
+    public Shape getClosestShape() {
+        return shapes.get(shapes.size() - 1);
+    }
 }
