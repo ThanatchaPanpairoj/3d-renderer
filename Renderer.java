@@ -97,7 +97,9 @@ public class Renderer extends JFrame
                     speed = diagonalMoveSpeed;
                 }
                 Shape closestShape = comp.getClosestShape();
-                boolean notBlocked = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  closestShape.getZ() - speed > closestShape.getR() * Math.sqrt(2));
+                boolean forwardSpace = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  closestShape.getZ() - speed > closestShape.getR() * Math.sqrt(2));
+                boolean rightSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() - speed) > closestShape.getR() * Math.sqrt(2));
+                boolean leftSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() + speed) > closestShape.getR() * Math.sqrt(2));
 
                 comp.transform(new double[] {1,                     0,                    0, 0, 
                         0,  Math.cos(-xRotation), Math.sin(-xRotation), 0, 
@@ -110,19 +112,19 @@ public class Renderer extends JFrame
                         -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
                         0, 0,                    0, 1});
 
-                if(left && !right) {
+                if(left && !right && leftSpace) {
                     comp.transform(new double[] {1, 0, 0, speed, 
                             0, 1, 0,     0, 
                             0, 0, 1,     0, 
                             0, 0, 0,     1});
-                } else if(right && !left) {
+                } else if(right && !left && rightSpace) {
                     comp.transform(new double[] {1, 0, 0, -speed, 
                             0, 1, 0,      0, 
                             0, 0, 1,      0, 
                             0, 0, 0,      1});
                 }
 
-                if(forward && !backward && notBlocked) {
+                if(forward && !backward && forwardSpace) {
                     comp.transform(new double[] {1, 0, 0,      0, 
                             0, 1, 0,      0, 
                             0, 0, 1, -speed, 
