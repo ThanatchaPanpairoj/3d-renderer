@@ -1,4 +1,5 @@
 import java.awt.Toolkit;
+
 /**
  * Write a description of class Point here.
  * 

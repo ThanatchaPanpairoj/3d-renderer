@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=center\ c\ l1\ l2\ l3\ l4
+comment0.target=Face(Point,\ java.awt.Color,\ Line,\ Line,\ Line,\ Line)
+comment1.params=g2
+comment1.target=void\ draw(java.awt.Graphics2D)
+comment2.params=c
+comment2.target=void\ setColor(java.awt.Color)
+comment3.params=
+comment3.target=Point\ getCenter()
+comment4.params=
+comment4.target=java.awt.Polygon\ getPolygon()
+numComments=5

@@ -97,7 +97,7 @@ public class Renderer extends JFrame
                     speed = diagonalMoveSpeed;
                 }
                 Shape closestShape = comp.getClosestShape();
-                boolean forwardSpace = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  closestShape.getZ() - speed > closestShape.getR() * Math.sqrt(2));
+                boolean forwardSpace = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() - speed) > closestShape.getR() * Math.sqrt(2));
                 boolean rightSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() - speed) > closestShape.getR() * Math.sqrt(2));
                 boolean leftSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() + speed) > closestShape.getR() * Math.sqrt(2));
 

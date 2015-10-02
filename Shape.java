@@ -8,9 +8,7 @@ import java.awt.Graphics2D;
  */
 public abstract class Shape
 {
-    public abstract void draw(Graphics2D g2);
-
-    public abstract void fillSide(Graphics2D g2, int side); 
+    public abstract void draw(Graphics2D g2); 
 
     public abstract void transform(double[] transformationMatrix);
 
