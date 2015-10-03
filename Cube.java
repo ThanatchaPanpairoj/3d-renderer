@@ -87,7 +87,7 @@ public class Cube extends Shape
             //             for(int i = 0; i < 8; i++) {
             //                 g2.drawString("" + i, (int)points[i].get2Dx(), (int)points[i].get2Dy());
             //             }
-            g2.drawString("" + Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)), (int)(new Point(x, y, z, 1).get2Dx()), (int)(new Point(x, y, z, 1).get2Dy()));
+            //g2.drawString("" + Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)), (int)(new Point(x, y, z, 1).get2Dx()), (int)(new Point(x, y, z, 1).get2Dy()));
         }
     }
 
@@ -106,10 +106,6 @@ public class Cube extends Shape
         x = newX;
         y = newY;
         z = newZ;
-    }
-    
-    public double getDistance() {
-        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
     }
 
     public double getX() {
