@@ -1,5 +1,4 @@
 import java.util.Comparator;
-import java.awt.Toolkit;
 
 /**
  * Write a description of class FaceDistanceComparator here.
@@ -9,8 +8,6 @@ import java.awt.Toolkit;
  */
 public class FaceDistanceComparator implements Comparator<Face>
 {
-    private static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-    
     public int compare(Face f1, Face f2) {
         Point p1 = f1.getCenter();
         Point p2 = f2.getCenter();
