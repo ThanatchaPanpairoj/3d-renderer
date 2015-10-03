@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.awt.Toolkit;
 
 /**
  * Write a description of class DistanceComparator here.
