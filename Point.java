@@ -1,5 +1,4 @@
 import java.awt.Toolkit;
-
 /**
  * Write a description of class Point here.
  * 
@@ -9,14 +8,14 @@ import java.awt.Toolkit;
 public class Point
 {
     private double x, y, z, s, depthScale;
-    private static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth(), HEIGHT = Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+    private static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth();
 
     public Point(double x, double y, double z, double s) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.s = s;
-        depthScale = 2 * WIDTH / (2 * WIDTH + z);
+        depthScale = 20 / (20 + z);
     }
 
     public void transform(double[] transformationMatrix) {
@@ -28,15 +27,15 @@ public class Point
         y = newY;
         z = newZ;
         s = newS;
-        depthScale = 2 * WIDTH / (2 * WIDTH + z);
+        depthScale = 20 / (20 + z);
     }
 
     public double get2Dx() {
-        return s * x * depthScale;
+        return WIDTH * s * x * depthScale / 20;
     }
 
     public double get2Dy() {
-        return s * y * depthScale;
+        return WIDTH * s * y * depthScale / 20;
     }
 
     public double getX() {

@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Color;
+import java.awt.BasicStroke;
 import java.util.ArrayList;
 
 import javax.swing.JComponent;
@@ -80,6 +81,7 @@ public class RendererComponent extends JComponent
         Graphics2D g2 = (Graphics2D)g;
         g2.translate(width / 2, height / 2);
         g2.setColor(Color.GRAY);
+        g2.setStroke(new BasicStroke(1));
 
         g2.drawString("WASD to move", -width / 2 + 5, - height / 2 + 17);
         g2.drawString("Mouse to turn", -width / 2 + 5, - height / 2 + 34);

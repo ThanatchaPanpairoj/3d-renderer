@@ -16,23 +16,6 @@ public class Face
     private Line l1, l2, l3, l4;
 
     public Face(Point center, Color c, Line l1, Line l2, Line l3, Line l4) {
-        this.poly = new Polygon(new int[] {(int)l1.getPointOne().get2Dx(), 
-                (int)l1.getPointTwo().get2Dx(), 
-                (int)l2.getPointOne().get2Dx(), 
-                (int)l2.getPointTwo().get2Dx(), 
-                (int)l3.getPointOne().get2Dx(), 
-                (int)l3.getPointTwo().get2Dx(), 
-                (int)l4.getPointTwo().get2Dx(), 
-                (int)l4.getPointOne().get2Dx(),},
-            new int[] {(int)l1.getPointOne().get2Dy(), 
-                (int)l1.getPointTwo().get2Dy(), 
-                (int)l2.getPointOne().get2Dy(), 
-                (int)l2.getPointTwo().get2Dy(), 
-                (int)l3.getPointOne().get2Dy(), 
-                (int)l3.getPointTwo().get2Dy(), 
-                (int)l4.getPointTwo().get2Dy(), 
-                (int)l4.getPointOne().get2Dy(),},
-            8);;
         this.center = center;
         this.color = c;
         this.l1 = l1;
@@ -68,7 +51,7 @@ public class Face
         l3.draw(g2);
         l4.draw(g2);
 
-        //g2.drawString(getCenter().getX() + "," + getCenter().getY() + "," + getCenter().getZ(), (int)getCenter().get2Dx(), (int)getCenter().get2Dy());
+        //g2.drawString((int)getCenter().getX() + "," + (int)getCenter().getY() + "," + (int)getCenter().getZ(), (int)getCenter().get2Dx(), (int)getCenter().get2Dy());
     }
 
     public void setColor(Color c) {

@@ -1,7 +1,5 @@
 import java.awt.Graphics2D;
-import java.awt.Polygon;
 import java.awt.Color;
-import java.awt.BasicStroke;
 import java.util.ArrayList;
 
 /**
@@ -79,13 +77,17 @@ public class Cube extends Shape
 
         if(draw) {   
             faces.sort(new FaceDistanceComparator());
-            for(int i = 3; i < 6; i++) {
+            for(int i = 0; i < 6; i++) {
                 faces.get(i).draw(g2);
             }
-            //for(int i = 0; i < 8; i++) {
-            //    g2.drawString("" + i, (int)points[i].get2Dx(), (int)points[i].get2Dy());
-            //}
-            //g2.drawString("" + Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)), (int)(new Point(x, y, z, 1).get2Dx()), (int)(new Point(x, y, z, 1).get2Dy()));
+
+//             for(Point p : points) {
+//                 g2.drawString((int)p.getX() + "," + (int)p.getY() + "," + (int)p.getZ(), (int)p.get2Dx(), (int)p.get2Dy());
+//             }
+            //             for(int i = 0; i < 8; i++) {
+            //                 g2.drawString("" + i, (int)points[i].get2Dx(), (int)points[i].get2Dy());
+            //             }
+            g2.drawString("" + Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2)), (int)(new Point(x, y, z, 1).get2Dx()), (int)(new Point(x, y, z, 1).get2Dy()));
         }
     }
 
@@ -104,6 +106,10 @@ public class Cube extends Shape
         x = newX;
         y = newY;
         z = newZ;
+    }
+    
+    public double getDistance() {
+        return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2) + Math.pow(z, 2));
     }
 
     public double getX() {
