@@ -44,7 +44,7 @@ public class Renderer extends JFrame
 {
     private double mouseX, mouseY, numberOfDirectionsMoving, xRotation;
     private boolean left, right, forward, backward;
-    private static final double diagonalMoveSpeed = 100 / Math.sqrt(2);
+    private static final double diagonalMoveSpeed = 50 / Math.sqrt(2);
 
     public static void main(String[] args) throws Exception {
         Renderer r = new Renderer();
@@ -92,12 +92,13 @@ public class Renderer extends JFrame
                 mouseY = MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25;
                 comp.updateMouse(mouseX, mouseY);
 
-                double speed = 100;
+                double speed = 50;
                 if(numberOfDirectionsMoving > 1 && numberOfDirectionsMoving < 3) {
                     speed = diagonalMoveSpeed;
                 }
                 Shape closestShape = comp.getClosestShape();
                 boolean forwardSpace = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() - speed) > closestShape.getR() * Math.sqrt(2));
+                boolean backwardSpace = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() + speed) > closestShape.getR() * Math.sqrt(2));
                 boolean rightSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() - speed) > closestShape.getR() * Math.sqrt(2));
                 boolean leftSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() + speed) > closestShape.getR() * Math.sqrt(2));
 
@@ -129,7 +130,7 @@ public class Renderer extends JFrame
                             0, 1, 0,      0, 
                             0, 0, 1, -speed, 
                             0, 0, 0,      1});
-                } else if(backward && !forward) {
+                } else if(backward && !forward && backwardSpace) {
                     comp.transform(new double[] {1, 0, 0,     0, 
                             0, 1, 0,     0, 
                             0, 0, 1, speed, 
