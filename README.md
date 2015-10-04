@@ -18,10 +18,11 @@ Thanatcha Panpairoj
 
 ####HOW TO START THIS PROJECT: 
 <ol>
-<li>Make sure you have the latest version of Java</li>
-<li>Clone this repo</li>
+<li>Make sure you have the latest version of Java and BlueJ</li>
+<li>Clone this repo or download the zip</li>
 <li>Find it in explorer</li>
-<li>Double-click 'package'</li>
+<li>Open 'src'</li>
+<li>Open 'package'</li>
 <li>BlueJ will open</li>
 </ol>
 
