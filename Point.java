@@ -1,4 +1,5 @@
 import java.awt.Toolkit;
+
 /**
  * Write a description of class Point here.
  * 
@@ -31,11 +32,11 @@ public class Point
     }
 
     public double get2Dx() {
-        return WIDTH * s * x * depthScale / 20;
+        return depthScale * WIDTH / 20 * s * x;
     }
 
     public double get2Dy() {
-        return WIDTH * s * y * depthScale / 20;
+        return depthScale * WIDTH / 20 * s * y;
     }
 
     public double getX() {

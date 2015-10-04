@@ -6,10 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import java.awt.Point;
-import java.awt.Image;
-import javax.imageio.ImageIO;
 import java.awt.Toolkit;
-import java.awt.Cursor;
 import java.awt.MouseInfo;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -26,11 +23,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
-
-import java.net.URL;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * This is the GUITemplate class. This includes the JFrame, listeners, buttons, and the GUITemplateComponent which includes all the objects. The buttons and the components are all added to a panel, which is added to the frame.
@@ -109,20 +101,32 @@ public class Renderer extends JFrame
                         0, 0,                    0, 1});
 
                 Shape closestShape = comp.getClosestShape();
+                double closestX = closestShape.getX();
+                double closestY = closestShape.getY();
+                double closestZ = closestShape.getZ();
+                double closestR = closestShape.getR();
                 Shape secondClosestShape = comp.getSecondClosestShape();
+                double closestX2 = secondClosestShape.getX();
+                double closestY2 = secondClosestShape.getY();
+                double closestZ2 = secondClosestShape.getZ();
+                double closestR2 = secondClosestShape.getR();
                 Shape thirdClosestShape = comp.getThirdClosestShape();
-                boolean forwardSpace = ((Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() - speed) > closestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(secondClosestShape.getX()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getZ() - speed) > secondClosestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(thirdClosestShape.getX()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getZ() - speed) > thirdClosestShape.getR() * Math.sqrt(2)));
-                boolean backwardSpace = ((Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() + speed) > closestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(secondClosestShape.getX()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getZ() + speed) > secondClosestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(thirdClosestShape.getX()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getZ() + speed) > thirdClosestShape.getR() * Math.sqrt(2)));
-                boolean rightSpace = ((Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() - speed) > closestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(secondClosestShape.getZ()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getX() - speed) > secondClosestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(thirdClosestShape.getZ()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getX() - speed) > thirdClosestShape.getR() * Math.sqrt(2)));
-                boolean leftSpace = ((Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() + speed) > closestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(secondClosestShape.getZ()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getX() + speed) > secondClosestShape.getR() * Math.sqrt(2)))
-                    && ((Math.abs(thirdClosestShape.getZ()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getX() + speed) > thirdClosestShape.getR() * Math.sqrt(2)));
+                double closestX3 = thirdClosestShape.getX();
+                double closestY3 = thirdClosestShape.getY();
+                double closestZ3 = thirdClosestShape.getZ();
+                double closestR3 = thirdClosestShape.getR();
+                boolean forwardSpace = ((Math.abs(closestX) > closestR || Math.abs(closestY) > closestR + width / 2 ||  Math.abs(closestZ - speed) > closestR * Math.sqrt(2)))
+                    && ((Math.abs(closestX2) > closestR2 || Math.abs(closestY2) > closestR2 + width / 2 ||  Math.abs(closestZ2 - speed) > closestR2 * Math.sqrt(2)))
+                    && ((Math.abs(closestX3) > closestR3 || Math.abs(closestY3) > closestR3 + width / 2 ||  Math.abs(closestZ3 - speed) > closestR3 * Math.sqrt(2)));
+                boolean backwardSpace = ((Math.abs(closestX) > closestR || Math.abs(closestY) > closestR + width / 2 ||  Math.abs(closestZ + speed) > closestR * Math.sqrt(2)))
+                    && ((Math.abs(closestX2) > closestR2 || Math.abs(closestY2) > closestR2 + width / 2 ||  Math.abs(closestZ2 + speed) > closestR2 * Math.sqrt(2)))
+                    && ((Math.abs(closestX3) > closestR3 || Math.abs(closestY3) > closestR3 + width / 2 ||  Math.abs(closestZ3 + speed) > closestR3 * Math.sqrt(2)));
+                boolean rightSpace = ((Math.abs(closestZ) > closestR || Math.abs(closestY) > closestR + width / 2 ||  Math.abs(closestX - speed) > closestR * Math.sqrt(2)))
+                    && ((Math.abs(closestZ2) > closestR2 || Math.abs(closestY2) > closestR2 + width / 2 ||  Math.abs(closestX2 - speed) > closestR2 * Math.sqrt(2)))
+                    && ((Math.abs(closestZ3) > closestR3 || Math.abs(closestY3) > closestR3 + width / 2 ||  Math.abs(closestX3 - speed) > closestR3 * Math.sqrt(2)));
+                boolean leftSpace = ((Math.abs(closestZ) > closestR || Math.abs(closestY) > closestR + width / 2 ||  Math.abs(closestX + speed) > closestR * Math.sqrt(2)))
+                    && ((Math.abs(closestZ2) > closestR2 || Math.abs(closestY2) > closestR2 + width / 2 ||  Math.abs(closestX2 + speed) > closestR2 * Math.sqrt(2)))
+                    && ((Math.abs(closestZ3) > closestR3 || Math.abs(closestY3) > closestR3 + width / 2 ||  Math.abs(closestX3 + speed) > closestR3 * Math.sqrt(2)));
                 if(left && !right && leftSpace) {
                     comp.transform(new double[] {1, 0, 0, speed, 
                             0, 1, 0,     0, 
