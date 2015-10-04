@@ -127,7 +127,8 @@ public class RendererComponent extends JComponent
                         0, 1, 0, yShift, 
                         0, 0, 1, zShift, 
                         0, 0, 0,        1});         
-            }
+            } //else 
+                //s.setColor(Color.WHITE);
         }
     }
 
@@ -148,8 +149,19 @@ public class RendererComponent extends JComponent
     public void click() {
         //
     }
-       
+
     public Shape getClosestShape() {
+        //shapes.get(shapes.size() - 1).setColor(Color.BLACK);
         return shapes.get(shapes.size() - 1);
+    }
+
+    public Shape getSecondClosestShape() {
+        //shapes.get(shapes.size() - 2).setColor(Color.BLACK);
+        return shapes.get(shapes.size() - 2);
+    }
+    
+    public Shape getThirdClosestShape() {
+        //shapes.get(shapes.size() - 3).setColor(Color.BLACK);
+        return shapes.get(shapes.size() - 3);
     }
 }

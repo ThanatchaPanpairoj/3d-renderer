@@ -96,11 +96,6 @@ public class Renderer extends JFrame
                 if(numberOfDirectionsMoving > 1 && numberOfDirectionsMoving < 3) {
                     speed = diagonalMoveSpeed;
                 }
-                Shape closestShape = comp.getClosestShape();
-                boolean forwardSpace = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() - speed) > closestShape.getR() * Math.sqrt(2));
-                boolean backwardSpace = (Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() + speed) > closestShape.getR() * Math.sqrt(2));
-                boolean rightSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() - speed) > closestShape.getR() * Math.sqrt(2));
-                boolean leftSpace = (Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() + speed) > closestShape.getR() * Math.sqrt(2));
 
                 comp.transform(new double[] {1,                     0,                    0, 0, 
                         0,  Math.cos(-xRotation), Math.sin(-xRotation), 0, 
@@ -113,6 +108,21 @@ public class Renderer extends JFrame
                         -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
                         0, 0,                    0, 1});
 
+                Shape closestShape = comp.getClosestShape();
+                Shape secondClosestShape = comp.getSecondClosestShape();
+                Shape thirdClosestShape = comp.getThirdClosestShape();
+                boolean forwardSpace = ((Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() - speed) > closestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(secondClosestShape.getX()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getZ() - speed) > secondClosestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(thirdClosestShape.getX()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getZ() - speed) > thirdClosestShape.getR() * Math.sqrt(2)));
+                boolean backwardSpace = ((Math.abs(closestShape.getX()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getZ() + speed) > closestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(secondClosestShape.getX()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getZ() + speed) > secondClosestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(thirdClosestShape.getX()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getZ() + speed) > thirdClosestShape.getR() * Math.sqrt(2)));
+                boolean rightSpace = ((Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() - speed) > closestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(secondClosestShape.getZ()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getX() - speed) > secondClosestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(thirdClosestShape.getZ()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getX() - speed) > thirdClosestShape.getR() * Math.sqrt(2)));
+                boolean leftSpace = ((Math.abs(closestShape.getZ()) > closestShape.getR() || Math.abs(closestShape.getY()) > closestShape.getR() + width / 2 ||  Math.abs(closestShape.getX() + speed) > closestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(secondClosestShape.getZ()) > secondClosestShape.getR() || Math.abs(secondClosestShape.getY()) > secondClosestShape.getR() + width / 2 ||  Math.abs(secondClosestShape.getX() + speed) > secondClosestShape.getR() * Math.sqrt(2)))
+                    && ((Math.abs(thirdClosestShape.getZ()) > thirdClosestShape.getR() || Math.abs(thirdClosestShape.getY()) > thirdClosestShape.getR() + width / 2 ||  Math.abs(thirdClosestShape.getX() + speed) > thirdClosestShape.getR() * Math.sqrt(2)));
                 if(left && !right && leftSpace) {
                     comp.transform(new double[] {1, 0, 0, speed, 
                             0, 1, 0,     0, 

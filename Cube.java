@@ -61,9 +61,7 @@ public class Cube extends Shape
 
     public Cube(Color c, double radius, double x, double y, double z) {
         this(radius, x, y, z);
-        for(Face f : faces) {
-            f.setColor(c);
-        }
+        setColor(c);
     }
 
     public void draw(Graphics2D g2) {
@@ -81,9 +79,9 @@ public class Cube extends Shape
                 faces.get(i).draw(g2);
             }
 
-//             for(Point p : points) {
-//                 g2.drawString((int)p.getX() + "," + (int)p.getY() + "," + (int)p.getZ(), (int)p.get2Dx(), (int)p.get2Dy());
-//             }
+            //             for(Point p : points) {
+            //                 g2.drawString((int)p.getX() + "," + (int)p.getY() + "," + (int)p.getZ(), (int)p.get2Dx(), (int)p.get2Dy());
+            //             }
             //             for(int i = 0; i < 8; i++) {
             //                 g2.drawString("" + i, (int)points[i].get2Dx(), (int)points[i].get2Dy());
             //             }
@@ -106,6 +104,12 @@ public class Cube extends Shape
         x = newX;
         y = newY;
         z = newZ;
+    }
+
+    public void setColor(Color c) {
+        for(Face f : faces) {
+            f.setColor(c);
+        }
     }
 
     public double getX() {
