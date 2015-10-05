@@ -32,11 +32,11 @@ public class Point
     }
 
     public double get2Dx() {
-        return depthScale * WIDTH / 20 * s * x;
+        return depthScale * WIDTH / 40 * s * x;
     }
 
     public double get2Dy() {
-        return depthScale * WIDTH / 20 * s * y;
+        return depthScale * WIDTH / 40 * s * y;
     }
 
     public double getX() {
