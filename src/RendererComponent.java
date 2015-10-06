@@ -67,8 +67,7 @@ public class RendererComponent extends JComponent
         shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615, 2600));
         shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615, 2200));
         shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615, 1800));
-        
-        
+
         shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  1800));
         shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  2200));
         shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  2600));
@@ -140,7 +139,7 @@ public class RendererComponent extends JComponent
                         0, 0, 1, zShift, 
                         0, 0, 0,        1});         
             } //else 
-                //s.setColor(Color.WHITE);
+            //s.setColor(Color.WHITE);
         }
     }
 
@@ -171,9 +170,14 @@ public class RendererComponent extends JComponent
         //shapes.get(shapes.size() - 2).setColor(Color.BLACK);
         return shapes.get(shapes.size() - 2);
     }
-    
+
     public Shape getThirdClosestShape() {
         //shapes.get(shapes.size() - 3).setColor(Color.BLACK);
         return shapes.get(shapes.size() - 3);
+    }
+
+    public Shape getFourthClosestShape() {
+        //shapes.get(shapes.size() - 4).setColor(Color.BLACK);
+        return shapes.get(shapes.size() - 4);
     }
 }
