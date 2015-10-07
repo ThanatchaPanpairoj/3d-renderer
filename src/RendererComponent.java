@@ -26,66 +26,66 @@ public class RendererComponent extends JComponent
         shapes = new ArrayList<Shape>();
         shapes.add(firstCube = new Cube(200, 0, 0, 1800));
 
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  1800));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  2200));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  2600));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 + 185,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -3800, height  / 2 + 185,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4200, height  / 2 + 185,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4600, height  / 2 + 185,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185, 2600));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185, 2200));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 + 185, 1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 600,  1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 600,  2200));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 600,  2600));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 600,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -3800, 600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4200, 600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4600, 600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 600,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 600, 2600));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 600, 2200));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 600, 1800));
 
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 215,  1800));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 215,  2200));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 215,  2600));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 215,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 215,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -3800, height  / 2 - 215,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4200, height  / 2 - 215,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4600, height  / 2 - 215,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 215,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 215,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 215, 2600));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 215, 2200));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 215, 1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 200,  1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 200,  2200));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 200,  2600));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 200,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, 200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -3800, 200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4200, 200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4600, 200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 200,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 200, 2600));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 200, 2200));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, 200, 1800));
 
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 615,  1800));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 615,  2200));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 615,  2600));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 615,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 615,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -3800, height  / 2 - 615,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4200, height  / 2 - 615,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4600, height  / 2 - 615,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615, 2600));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615, 2200));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 615, 1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -200,  1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -200,  2200));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -200,  2600));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -200,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -3800, -200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4200, -200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4600, -200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -200,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -200,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -200, 2600));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -200, 2200));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -200, 1800));
 
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  1800));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  2200));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  2600));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -3400, height  / 2 - 1015,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -3800, height  / 2 - 1015,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4200, height  / 2 - 1015,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -4600, height  / 2 - 1015,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 1015,  3400));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 1015,  3000));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 1015, 2600));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 1015, 2200));
-        shapes.add(new Cube(Color.WHITE, 200, -5000, height  / 2 - 1015, 1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -600,  1800));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -600,  2200));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -600,  2600));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -600,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -3400, -600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -3800, -600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4200, -600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -4600, -600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -600,  3400));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -600,  3000));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -600, 2600));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -600, 2200));
+        shapes.add(new Cube(Color.WHITE, 200, -5000, -600, 1800));
 
         grid = new ArrayList<Line>();
         for(int w = -100000; w <= 100000; w += 400) {
-            grid.add(new Line(new Point(w, height, -100000, 1), new Point(w, height, 100000, 1)));
-            grid.add(new Line(new Point(-100000, height, w, 1), new Point(100000, height, w, 1)));
+            grid.add(new Line(new Point(w, 800, -100000, 1), new Point(w, 800, 100000, 1)));
+            grid.add(new Line(new Point(-100000, 800, w, 1), new Point(100000, 800, w, 1)));
         }
     }
 
@@ -179,5 +179,10 @@ public class RendererComponent extends JComponent
     public Shape getFourthClosestShape() {
         //shapes.get(shapes.size() - 4).setColor(Color.BLACK);
         return shapes.get(shapes.size() - 4);
+    }
+    
+        public Shape getFifthClosestShape() {
+        //shapes.get(shapes.size() - 5).setColor(Color.BLACK);
+        return shapes.get(shapes.size() - 5);
     }
 }

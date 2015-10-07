@@ -17,4 +17,6 @@ comment7.params=
 comment7.target=Shape\ getThirdClosestShape()
 comment8.params=
 comment8.target=Shape\ getFourthClosestShape()
-numComments=9
+comment9.params=
+comment9.target=Shape\ getFifthClosestShape()
+numComments=10
