@@ -175,14 +175,4 @@ public class RendererComponent extends JComponent
         //shapes.get(shapes.size() - 3).setColor(Color.BLACK);
         return shapes.get(shapes.size() - 3);
     }
-
-    public Shape getFourthClosestShape() {
-        //shapes.get(shapes.size() - 4).setColor(Color.BLACK);
-        return shapes.get(shapes.size() - 4);
-    }
-    
-        public Shape getFifthClosestShape() {
-        //shapes.get(shapes.size() - 5).setColor(Color.BLACK);
-        return shapes.get(shapes.size() - 5);
-    }
 }

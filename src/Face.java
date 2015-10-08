@@ -65,4 +65,17 @@ public class Face
     public Polygon getPolygon() {
         return poly;
     }
+//     
+//     public getIntersection() {
+//         Point p1 = l1.getPointOne();
+//         Point p2 = l2.getPointOne();
+//         Point p3 = l3.getPointOne();
+//         Point p4 = l4.getPointTwo();
+//         
+//         double closestDistance = p1.getDistance();
+//         Point closestPoint = p1;
+//         for(int i = 2; i < 5; i++) {
+//             if(
+//         }
+//     }
 }

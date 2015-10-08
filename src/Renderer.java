@@ -5,9 +5,9 @@ import javax.swing.JOptionPane;
 
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
-import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseWheelListener;
@@ -23,6 +23,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
+ 
+ 
 
 /**
  * This is the GUITemplate class. This includes the JFrame, listeners, buttons, and the GUITemplateComponent which includes all the objects. The buttons and the components are all added to a panel, which is added to the frame.
@@ -115,36 +117,18 @@ public class Renderer extends JFrame
                 double closestY3 = thirdClosestShape.getY();
                 double closestZ3 = thirdClosestShape.getZ();
                 double closestR3 = thirdClosestShape.getR();
-                Shape fourthClosestShape = comp.getFourthClosestShape();
-                double closestX4 = fourthClosestShape.getX();
-                double closestY4 = fourthClosestShape.getY();
-                double closestZ4 = fourthClosestShape.getZ();
-                double closestR4 = fourthClosestShape.getR();
-                Shape fifthClosestShape = comp.getFifthClosestShape();
-                double closestX5 = fifthClosestShape.getX();
-                double closestY5 = fifthClosestShape.getY();
-                double closestZ5 = fifthClosestShape.getZ();
-                double closestR5 = fifthClosestShape.getR();
                 boolean forwardSpace = ((Math.abs(closestX) > closestR * Math.sqrt(2)|| Math.abs(closestY) > closestR * Math.sqrt(2) ||  Math.abs(closestZ - speed) > closestR * Math.sqrt(2)))
                     && ((Math.abs(closestX2) > closestR2 * Math.sqrt(2) || Math.abs(closestY2) > closestR2 * Math.sqrt(2) ||  Math.abs(closestZ2 - speed) > closestR2 * Math.sqrt(2)))
-                    && ((Math.abs(closestX3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestZ3 - speed) > closestR3 * Math.sqrt(2)))
-                    && ((Math.abs(closestX4) > closestR4 * Math.sqrt(2) || Math.abs(closestY4) > closestR4 * Math.sqrt(2) ||  Math.abs(closestZ4 - speed) > closestR4 * Math.sqrt(2)))
-                    && ((Math.abs(closestX5) > closestR5 * Math.sqrt(2) || Math.abs(closestY5) > closestR5 * Math.sqrt(2) ||  Math.abs(closestZ5 - speed) > closestR5 * Math.sqrt(2)));
+                    && ((Math.abs(closestX3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestZ3 - speed) > closestR3 * Math.sqrt(2)));
                 boolean backwardSpace = ((Math.abs(closestX) > closestR * Math.sqrt(2)|| Math.abs(closestY) > closestR * Math.sqrt(2) ||  Math.abs(closestZ + speed) > closestR * Math.sqrt(2)))
                     && ((Math.abs(closestX2) > closestR2 * Math.sqrt(2) || Math.abs(closestY2) > closestR2 * Math.sqrt(2) ||  Math.abs(closestZ2 + speed) > closestR2 * Math.sqrt(2)))
-                    && ((Math.abs(closestX3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestZ3 + speed) > closestR3 * Math.sqrt(2)))
-                    && ((Math.abs(closestX4) > closestR4 * Math.sqrt(2) || Math.abs(closestY4) > closestR4 * Math.sqrt(2) ||  Math.abs(closestZ4 + speed) > closestR4 * Math.sqrt(2)))
-                    && ((Math.abs(closestX5) > closestR5 * Math.sqrt(2) || Math.abs(closestY5) > closestR5 * Math.sqrt(2) ||  Math.abs(closestZ5 + speed) > closestR5 * Math.sqrt(2)));
+                    && ((Math.abs(closestX3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestZ3 + speed) > closestR3 * Math.sqrt(2)));
                 boolean rightSpace = ((Math.abs(closestZ) > closestR * Math.sqrt(2)|| Math.abs(closestY) > closestR * Math.sqrt(2) ||  Math.abs(closestX - speed) > closestR * Math.sqrt(2)))
                     && ((Math.abs(closestZ2) > closestR2 * Math.sqrt(2) || Math.abs(closestY2) > closestR2 * Math.sqrt(2) ||  Math.abs(closestX2 - speed) > closestR2 * Math.sqrt(2)))
-                    && ((Math.abs(closestZ3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestX3 - speed) > closestR3 * Math.sqrt(2)))
-                    && ((Math.abs(closestZ4) > closestR4 * Math.sqrt(2) || Math.abs(closestY4) > closestR4 * Math.sqrt(2) ||  Math.abs(closestX4 - speed) > closestR4 * Math.sqrt(2)))
-                    && ((Math.abs(closestZ5) > closestR5 * Math.sqrt(2) || Math.abs(closestY5) > closestR5 * Math.sqrt(2) ||  Math.abs(closestX5 - speed) > closestR5 * Math.sqrt(2)));
+                    && ((Math.abs(closestZ3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestX3 - speed) > closestR3 * Math.sqrt(2)));
                 boolean leftSpace = ((Math.abs(closestZ) > closestR * Math.sqrt(2)|| Math.abs(closestY) > closestR * Math.sqrt(2) ||  Math.abs(closestX + speed) > closestR * Math.sqrt(2)))
                     && ((Math.abs(closestZ2) > closestR2 * Math.sqrt(2) || Math.abs(closestY2) > closestR2 * Math.sqrt(2) ||  Math.abs(closestX2 + speed) > closestR2 * Math.sqrt(2)))
-                    && ((Math.abs(closestZ3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestX3 + speed) > closestR3 * Math.sqrt(2)))
-                    && ((Math.abs(closestZ4) > closestR4 * Math.sqrt(2) || Math.abs(closestY4) > closestR4 * Math.sqrt(2) ||  Math.abs(closestX4 + speed) > closestR4 * Math.sqrt(2)))
-                    && ((Math.abs(closestZ5) > closestR5 * Math.sqrt(2) || Math.abs(closestY5) > closestR5 * Math.sqrt(2) ||  Math.abs(closestX5 + speed) > closestR5 * Math.sqrt(2)));
+                    && ((Math.abs(closestZ3) > closestR3 * Math.sqrt(2) || Math.abs(closestY3) > closestR3 * Math.sqrt(2) ||  Math.abs(closestX3 + speed) > closestR3 * Math.sqrt(2)));
                 if(left && !right && leftSpace) {
                     comp.transform(new double[] {1, 0, 0, speed, 
                             0, 1, 0,     0, 

@@ -126,5 +126,12 @@ public class Cube extends Shape
 
     public double getR() {
         return radius;
+//         Face f = faces.get(5);
+//         
+//         return
+    }
+    
+    public Point[] getPoints() {
+        return points;
     }
 }

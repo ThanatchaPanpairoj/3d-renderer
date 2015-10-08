@@ -17,4 +17,6 @@ comment7.params=
 comment7.target=double\ getZ()
 comment8.params=
 comment8.target=double\ getR()
-numComments=9
+comment9.params=
+comment9.target=Point[]\ getPoints()
+numComments=10
