@@ -1,4 +1,4 @@
-#3D World Drawer
+#3D Renderer
 Displays and animates shapes with x, y and z coordinates using 4-d transformation matrixies
 <br>
 <br>
@@ -9,7 +9,7 @@ Displays and animates shapes with x, y and z coordinates using 4-d transformatio
 fun and learning
 
 ####VERSION or DATE: 
-9/30/15
+10/6/15
 
 ####AUTHORS: 
 Thanatcha Panpairoj
@@ -27,5 +27,6 @@ Thanatcha Panpairoj
 </ol>
 
 ####USER INSTRUCTIONS: 
+<li>Make sure you have java</li>
 <li>Download main.jar and open it</li>
 
