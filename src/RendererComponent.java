@@ -153,10 +153,6 @@ public class RendererComponent extends JComponent
         }
     }
 
-    public void updateMouse(double mouseX, double mouseY) {
-        //
-    }
-
     public void click() {
         //
     }

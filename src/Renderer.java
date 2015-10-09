@@ -84,7 +84,6 @@ public class Renderer extends JFrame
             public void actionPerformed(ActionEvent e) {
                 mouseX = MouseInfo.getPointerInfo().getLocation().getX() - getLocation().getX() - 3;
                 mouseY = MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25;
-                comp.updateMouse(mouseX, mouseY);
 
                 double speed = 50;
                 if(numberOfDirectionsMoving > 1 && numberOfDirectionsMoving < 3) {
