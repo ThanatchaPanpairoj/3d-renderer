@@ -81,6 +81,8 @@ public class RendererComponent extends JComponent
         shapes.add(new Cube(Color.WHITE, 200, -5000, -600, 2600));
         shapes.add(new Cube(Color.WHITE, 200, -5000, -600, 2200));
         shapes.add(new Cube(Color.WHITE, 200, -5000, -600, 1800));
+        
+        shapes.add(new Mouse(600, 5000, 200, 5000));
 
         grid = new ArrayList<Line>();
         for(int w = -100000; w <= 100000; w += 400) {

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=radius\ x\ y\ z
+comment0.target=Mouse(double,\ double,\ double,\ double)
+comment1.params=g2
+comment1.target=void\ draw(java.awt.Graphics2D)
+comment2.params=transformationMatrix
+comment2.target=void\ transform(double[])
+comment3.params=c
+comment3.target=void\ setColor(java.awt.Color)
+comment4.params=
+comment4.target=double\ getX()
+comment5.params=
+comment5.target=double\ getY()
+comment6.params=
+comment6.target=double\ getZ()
+comment7.params=
+comment7.target=double\ getR()
+numComments=8

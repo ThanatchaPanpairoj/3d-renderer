@@ -22,6 +22,4 @@ public abstract class Shape
     public abstract double getZ();
     
     public abstract double getR();
-    
-    public abstract Point[] getPoints();
 }
