@@ -13,4 +13,6 @@ comment5.params=
 comment5.target=Shape\ getSecondClosestShape()
 comment6.params=
 comment6.target=Shape\ getThirdClosestShape()
-numComments=7
+comment7.params=fps
+comment7.target=void\ updateFPS(int)
+numComments=8

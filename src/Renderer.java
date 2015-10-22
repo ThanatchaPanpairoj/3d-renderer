@@ -23,8 +23,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Robot;
 import java.awt.image.BufferedImage;
- 
- 
+
 
 /**
  * This is the GUITemplate class. This includes the JFrame, listeners, buttons, and the GUITemplateComponent which includes all the objects. The buttons and the components are all added to a panel, which is added to the frame.
@@ -36,6 +35,8 @@ import java.awt.image.BufferedImage;
 
 public class Renderer extends JFrame
 {
+    private long startTime;
+    private int frame;
     private double mouseX, mouseY, numberOfDirectionsMoving, xRotation;
     private boolean left, right, forward, backward;
     private static final double diagonalMoveSpeed = 50 / Math.sqrt(2);
@@ -47,6 +48,8 @@ public class Renderer extends JFrame
     public Renderer() throws Exception {
         super();
 
+        startTime = System.currentTimeMillis();
+        
         setCursor(getToolkit().createCustomCursor(
                 new BufferedImage(3, 3, BufferedImage.TYPE_INT_ARGB), new Point(0, 0),
                 "null"));
@@ -170,6 +173,12 @@ public class Renderer extends JFrame
                 robot.mouseMove(width / 2 + 3, height / 2 + 25);
 
                 comp.repaint();
+                frame++;
+                if(System.currentTimeMillis() - startTime >= 1000) {
+                    startTime += 1000;
+                    comp.updateFPS(frame);
+                    frame = 0;
+                }
             }
         }
 

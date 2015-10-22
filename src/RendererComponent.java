@@ -14,7 +14,7 @@ import javax.swing.JComponent;
  */
 public class RendererComponent extends JComponent
 {
-    private int width, height;
+    private int width, height, fps;
     private ArrayList<Shape> shapes;
     private Shape firstCube;
     private ArrayList<Line> grid;
@@ -92,12 +92,8 @@ public class RendererComponent extends JComponent
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
         g2.translate(width / 2, height / 2);
+
         g2.setColor(Color.GRAY);
-
-        g2.drawString("WASD to move", -width / 2 + 5, - height / 2 + 17);
-        g2.drawString("Mouse to turn", -width / 2 + 5, - height / 2 + 34);
-        g2.drawString("ESC to exit", -width / 2 + 5, - height / 2 + 51);
-
         for(Line l : grid) {
             l.draw(g2);
         }
@@ -141,6 +137,13 @@ public class RendererComponent extends JComponent
             } //else 
             //s.setColor(Color.WHITE);
         }
+
+        g2.setColor(Color.BLACK);
+
+        g2.drawString("WASD to move", -width / 2 + 5, - height / 2 + 17);
+        g2.drawString("Mouse to turn", -width / 2 + 5, - height / 2 + 34);
+        g2.drawString("ESC to exit", -width / 2 + 5, - height / 2 + 51);
+        g2.drawString("FPS: " + fps, width / 2 - 50, - height / 2 + 17);
     }
 
     public void transform(double[] transformationMatrix) {
@@ -170,5 +173,9 @@ public class RendererComponent extends JComponent
     public Shape getThirdClosestShape() {
         //shapes.get(shapes.size() - 3).setColor(Color.BLACK);
         return shapes.get(shapes.size() - 3);
+    }
+
+    public void updateFPS(int fps) {
+        this.fps = fps;
     }
 }
