@@ -37,7 +37,7 @@ public class Renderer extends JFrame
 {
     private long startTime;
     private int frame;
-    private double mouseX, mouseY, numberOfDirectionsMoving, xRotation;
+    private double mouseX, mouseY, numberOfDirectionsMoving, yRotation;
     private boolean left, right, forward, backward;
     private static final double diagonalMoveSpeed = 50 / Math.sqrt(2);
 
@@ -60,7 +60,7 @@ public class Renderer extends JFrame
         backward = false;
 
         numberOfDirectionsMoving = 0;
-        xRotation = 0;
+        yRotation = 0;
 
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize((int)dim.getWidth(), (int)dim.getHeight());
@@ -94,14 +94,14 @@ public class Renderer extends JFrame
                 }
 
                 comp.transform(new double[] {1,                     0,                    0, 0, 
-                        0,  Math.cos(-xRotation), Math.sin(-xRotation), 0, 
-                        0, -Math.sin(-xRotation), Math.cos(-xRotation), 0, 
+                        0,  Math.cos(-yRotation), Math.sin(-yRotation), 0, 
+                        0, -Math.sin(-yRotation), Math.cos(-yRotation), 0, 
                         0,                     0,                    0, 1});
 
-                double ySpinAngle = (width / 2 - mouseX) / 400;
-                comp.transform(new double[] {Math.cos(ySpinAngle), 0, Math.sin(ySpinAngle), 0,
+                double xSpinAngle = (width / 2 - mouseX) / 400;
+                comp.transform(new double[] {Math.cos(xSpinAngle), 0, Math.sin(xSpinAngle), 0,
                         0, 1,                    0, 0, 
-                        -Math.sin(ySpinAngle), 0, Math.cos(ySpinAngle), 0, 
+                        -Math.sin(xSpinAngle), 0, Math.cos(xSpinAngle), 0, 
                         0, 0,                    0, 1});
 
                 Shape closestShape = comp.getClosestShape();
@@ -156,18 +156,18 @@ public class Renderer extends JFrame
                 } 
 
                 comp.transform(new double[] {1,                     0,                  0, 0, 
-                        0,  Math.cos(xRotation), Math.sin(xRotation), 0, 
-                        0, -Math.sin(xRotation), Math.cos(xRotation), 0, 
+                        0,  Math.cos(yRotation), Math.sin(yRotation), 0, 
+                        0, -Math.sin(yRotation), Math.cos(yRotation), 0, 
                         0,                     0,                  0, 1});
 
-                double xSpinAngle = (height / 2 - mouseY) / 400;
-                if(xRotation + xSpinAngle < Math.PI / 2 && xRotation + xSpinAngle > -Math.PI / 2) {
+                double ySpinAngle = (height / 2 - mouseY) / 400;
+                if(yRotation + ySpinAngle < Math.PI / 2 && yRotation + ySpinAngle > -Math.PI / 2) {
                     comp.transform(new double[] {1,                     0,                    0, 0, 
-                            0,  Math.cos(xSpinAngle), Math.sin(xSpinAngle), 0, 
-                            0, -Math.sin(xSpinAngle), Math.cos(xSpinAngle), 0, 
+                            0,  Math.cos(ySpinAngle), Math.sin(ySpinAngle), 0, 
+                            0, -Math.sin(ySpinAngle), Math.cos(ySpinAngle), 0, 
                             0,                     0,                    0, 1});
 
-                    xRotation += xSpinAngle;
+                    yRotation += ySpinAngle;
                 }
 
                 robot.mouseMove(width / 2 + 3, height / 2 + 25);
