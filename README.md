@@ -2,7 +2,7 @@
 Displays and animates shapes with x, y and z coordinates using 4-d transformation matrixies
 <br>
 <br>
-![ScreenShot](http://imgur.com/pJFMEE9.png)
+![ScreenShot](http://imgur.com/ymeD0cT.png)
 <br>
 
 ####PURPOSE OF PROJECT: 
