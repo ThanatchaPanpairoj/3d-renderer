@@ -10,16 +10,16 @@ import java.util.ArrayList;
  */
 public class Cube extends Shape
 {
-    private Line[] lines;
     private Point[] points;
     private ArrayList<Face> faces;
     private double radius, x, y, z;
 
-    public Cube(double radius, double x, double y, double z) {
+    public Cube(double radius, double x, double y, double z, int red, int green, int blue) {
         this.radius = radius;
         this.x = x;
         this.y = y;
         this.z = z;
+
         this.points = new Point[] {
             new Point(x + radius, y + radius, z - radius, 1),
             new Point(x + radius, y - radius, z - radius, 1),
@@ -30,38 +30,19 @@ public class Cube extends Shape
             new Point(x - radius, y - radius, z + radius, 1),
             new Point(x - radius, y + radius, z + radius, 1)};
 
-        lines = new Line[12];
-        lines[0] = new Line(points[0], points[1]); 
-        lines[1] = new Line(points[1], points[2]); 
-        lines[2] = new Line(points[2], points[3]); 
-        lines[3] = new Line(points[0], points[3]); 
-        lines[4] = new Line(points[5], points[4]); 
-        lines[5] = new Line(points[6], points[5]); 
-        lines[6] = new Line(points[7], points[6]); 
-        lines[7] = new Line(points[7], points[4]); 
-        lines[8] = new Line(points[1], points[5]); 
-        lines[9] = new Line(points[2], points[6]); 
-        lines[10] = new Line(points[3], points[7]); 
-        lines[11] = new Line(points[0], points[4]);
-
         faces = new ArrayList<Face>();
-        faces.add(new Face(new Point(x, y, z - radius, 1), Color.BLUE, lines[0], lines[1], lines[2], lines[3]));
-
-        faces.add(new Face(new Point(x + radius, y, z, 1), Color.GREEN, lines[0], lines[8], lines[4], lines[11]));
-
-        faces.add(new Face(new Point(x, y - radius, z, 1), Color.RED, lines[1], lines[9], lines[5], lines[8]));
-
-        faces.add(new Face(new Point(x - radius, y, z, 1), Color.YELLOW, lines[2], lines[10], lines[6], lines[9]));
-
-        faces.add(new Face(new Point(x, y + radius, z, 1), Color.CYAN, lines[3], lines[10], lines[7], lines[11]));
-
-        faces.add(new Face(new Point(x, y, z + radius, 1), Color.ORANGE, lines[6], lines[5], lines[4], lines[7]));
-
-    }
-
-    public Cube(Color c, double radius, double x, double y, double z) {
-        this(radius, x, y, z);
-        setColor(c);
+        faces.add(new Face(points[0], points[1], points[2], red, green, blue));
+        faces.add(new Face(points[3], points[0], points[2], red, green, blue));
+        faces.add(new Face(points[4], points[5], points[1], red, green, blue));
+        faces.add(new Face(points[0], points[4], points[1], red, green, blue));
+        faces.add(new Face(points[7], points[2], points[6], red, green, blue));
+        faces.add(new Face(points[7], points[3], points[2], red, green, blue));
+        faces.add(new Face(points[1], points[5], points[6], red, green, blue));
+        faces.add(new Face(points[2], points[1], points[6], red, green, blue));
+        faces.add(new Face(points[0], points[3], points[7], red, green, blue));
+        faces.add(new Face(points[4], points[0], points[7], red, green, blue));
+        faces.add(new Face(points[6], points[5], points[4], red, green, blue));
+        faces.add(new Face(points[7], points[6], points[4], red, green, blue));
     }
 
     public void draw(Graphics2D g2) {
@@ -75,8 +56,8 @@ public class Cube extends Shape
 
         if(draw) {   
             faces.sort(new FaceDistanceComparator());
-            for(int i = 0; i < 6; i++) {
-                faces.get(i).draw(g2);
+            for(Face f : faces) {
+                f.draw(g2);
             }
 
             //             for(Point p : points) {
@@ -95,7 +76,7 @@ public class Cube extends Shape
         }
 
         for(Face f : faces) {
-            f.getCenter().transform(transformationMatrix);
+            f.transform(transformationMatrix);
         }
 
         double newX = x * transformationMatrix[0] + y * transformationMatrix[1] + z * transformationMatrix[2] + transformationMatrix[3];
@@ -106,10 +87,9 @@ public class Cube extends Shape
         z = newZ;
     }
 
-    public void setColor(Color c) {
-        for(Face f : faces) {
-            f.setColor(c);
-        }
+    public void calculateNewlightingScale(double lightX, double lightY, double lightZ) {
+        for(Face f : faces)
+            f.calculateNewlightingScale(lightX, lightY, lightZ);
     }
 
     public double getX() {

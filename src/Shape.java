@@ -13,7 +13,7 @@ public abstract class Shape
 
     public abstract void transform(double[] transformationMatrix);
     
-    public abstract void setColor(Color c);
+    public abstract void calculateNewlightingScale(double lightX, double lightY, double lightZ);
 
     public abstract double getX();
 

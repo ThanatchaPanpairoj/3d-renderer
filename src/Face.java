@@ -10,72 +10,48 @@ import java.awt.Color;
  */
 public class Face
 {
-    private Polygon poly;
-    private Point center;
-    private Color color;
-    private Line l1, l2, l3, l4;
+    private int distance, lightingScale, red, green, blue;
+    private double lightingScaleConstant;
+    private Point p1, p2, p3, normal;
 
-    public Face(Point center, Color c, Line l1, Line l2, Line l3, Line l4) {
-        this.center = center;
-        this.color = c;
-        this.l1 = l1;
-        this.l2 = l2;
-        this.l3 = l3;
-        this.l4 = l4;
+    public Face(Point p1, Point p2, Point p3, int red, int green, int blue) {
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+        double a1 = p2.getX() - p1.getX();
+        double a2 = p2.getY() - p1.getY();
+        double a3 = p2.getZ() - p1.getZ();
+        double b1 = p3.getX() - p2.getX();
+        double b2 = p3.getY() - p2.getY();
+        double b3 = p3.getZ() - p2.getZ();
+        normal = new Point(a2*b3-a3*b2,a3*b1-a1*b3,a1*b2-a2*b1, 1);
+        lightingScaleConstant = 25 / (double)(Math.sqrt(Math.pow(normal.getX(), 2) + Math.pow(normal.getY(), 2) + Math.pow(normal.getZ(), 2))); 
+        distance = (int)(p1.getZ() + p2.getZ() + p3.getZ()); 
     }
 
     public void draw(Graphics2D g2) {
-        poly = new Polygon(new int[] {l1.getPointOne().get2Dx(), 
-                l1.getPointTwo().get2Dx(), 
-                l2.getPointOne().get2Dx(), 
-                l2.getPointTwo().get2Dx(), 
-                l3.getPointOne().get2Dx(), 
-                l3.getPointTwo().get2Dx(), 
-                l4.getPointTwo().get2Dx(), 
-                l4.getPointOne().get2Dx(),},
-            new int[] {l1.getPointOne().get2Dy(), 
-                l1.getPointTwo().get2Dy(), 
-                l2.getPointOne().get2Dy(), 
-                l2.getPointTwo().get2Dy(), 
-                l3.getPointOne().get2Dy(), 
-                l3.getPointTwo().get2Dy(), 
-                l4.getPointTwo().get2Dy(), 
-                l4.getPointOne().get2Dy(),},
-            8);
-
-        g2.setColor(color);
-        g2.fillPolygon(poly);
-        g2.setColor(Color.BLACK);
-        l1.draw(g2);
-        l2.draw(g2);
-        l3.draw(g2);
-        l4.draw(g2);
-
-        //g2.drawString((int)getCenter().getX() + "," + (int)getCenter().getY() + "," + (int)getCenter().getZ(), (int)getCenter().get2Dx(), (int)getCenter().get2Dy());
+        if((p2.getX() * normal.getX() + p2.getY() * normal.getY() + p2.getZ() * normal.getZ()) < 0) {
+            g2.setColor(new Color(red + lightingScale, green + lightingScale, blue + lightingScale));
+            g2.fillPolygon(new Polygon(new int[] {p1.get2Dx(), p2.get2Dx(), p3.get2Dx()}, 
+                    new int[] {p1.get2Dy(), p2.get2Dy(), p3.get2Dy()}, 3));
+            distance = (int)(p1.getZ() + p2.getZ() + p3.getZ());
+        } else {
+            distance = 999; 
+        }
     }
 
-    public void setColor(Color c) {
-        color = c;
+    public void transform(double[] transformationMatrix) {
+        normal.transform(transformationMatrix);
     }
 
-    public Point getCenter() {
-        return center;
+    public void calculateNewlightingScale(double lightX, double lightY, double lightZ) {
+        lightingScale = (int)((lightX * normal.getX() + lightY * normal.getY() + lightZ * normal.getZ()) * lightingScaleConstant);
     }
-
-    public Polygon getPolygon() {
-        return poly;
+    
+    public int getDistance() {
+        return distance;
     }
-//     
-//     public getIntersection() {
-//         Point p1 = l1.getPointOne();
-//         Point p2 = l2.getPointOne();
-//         Point p3 = l3.getPointOne();
-//         Point p4 = l4.getPointTwo();
-//         
-//         double closestDistance = p1.getDistance();
-//         Point closestPoint = p1;
-//         for(int i = 2; i < 5; i++) {
-//             if(
-//         }
-//     }
 }
