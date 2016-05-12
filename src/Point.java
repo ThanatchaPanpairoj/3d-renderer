@@ -10,7 +10,7 @@ public class Point
 {
     private double x, y, z, s, depthScale;
     private int twoDX, twoDY;
-    private static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2;
+    private static final double WIDTH = Toolkit.getDefaultToolkit().getScreenSize().getWidth() * 0.5;
 
     public Point(double x, double y, double z, double s) {
         this.x = x;

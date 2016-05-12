@@ -27,7 +27,7 @@ public class RendererComponent extends JComponent
         light = new Point(0, -1, 0, 1);
 
         shapes = new ArrayList<Shape>();
-        shapes.add(firstCube = new Cube(200, 0, 0, 1800, 70, 70, 230));
+        shapes.add(firstCube = new Cube(200, 0, 0, 1000, 200, 200, 200));
 
 //         shapes.add(new Cube(200, -3400, 600,  1800, 230, 230, 230));
 //         shapes.add(new Cube(200, -3400, 600,  2200, 230, 230, 230));

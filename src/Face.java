@@ -38,6 +38,10 @@ public class Face
             g2.fillPolygon(new Polygon(new int[] {p1.get2Dx(), p2.get2Dx(), p3.get2Dx()}, 
                     new int[] {p1.get2Dy(), p2.get2Dy(), p3.get2Dy()}, 3));
             distance = (int)(p1.getZ() + p2.getZ() + p3.getZ());
+            g2.setColor(Color.BLACK);
+            g2.drawString("" + (int)p1.getX() + "," + (int)p1.getY() + "," + (int)p1.getZ(), (int)p1.get2Dx(), (int)p1.get2Dy());
+            g2.drawString("" + (int)p2.getX() + "," + (int)p2.getY() + "," + (int)p2.getZ(), (int)p2.get2Dx(), (int)p2.get2Dy());
+            g2.drawString("" + (int)p3.getX() + "," + (int)p3.getY() + "," + (int)p3.getZ(), (int)p3.get2Dx(), (int)p3.get2Dy());
         } else {
             distance = 999; 
         }

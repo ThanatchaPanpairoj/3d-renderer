@@ -78,8 +78,7 @@ public class Renderer extends JFrame
         //         frame.setUndecorated(true);
         //         frame.setShape(new Ellipse2D.Double(0,0, 800, 800));//circle frame?
 
-        JPanel panel = new JPanel();
-        panel.setDoubleBuffered(true);
+        JPanel panel = new JPanel(true);
 
         RendererComponent comp = new RendererComponent(width, height);
 
