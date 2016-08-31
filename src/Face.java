@@ -35,8 +35,9 @@ public class Face
     public void draw(Graphics2D g2) {
         if((p2.getX() * normal.getX() + p2.getY() * normal.getY() + p2.getZ() * normal.getZ()) < 0) {
             g2.setColor(new Color(red + lightingScale, green + lightingScale, blue + lightingScale));
-            g2.fillPolygon(new Polygon(new int[] {p1.get2Dx(), p2.get2Dx(), p3.get2Dx()}, 
-                    new int[] {p1.get2Dy(), p2.get2Dy(), p3.get2Dy()}, 3));
+            //g2.fillPolygon(new Polygon(new int[] {p1.get2Dx(), p2.get2Dx(), p3.get2Dx()}, 
+                    //new int[] {p1.get2Dy(), p2.get2Dy(), p3.get2Dy()}, 3));
+            drawTriangle(g2, p1, p2, p3);
             distance = (int)(p1.getZ() + p2.getZ() + p3.getZ());
             g2.setColor(Color.BLACK);
             g2.drawString("" + (int)p1.getX() + "," + (int)p1.getY() + "," + (int)p1.getZ(), (int)p1.get2Dx(), (int)p1.get2Dy());
@@ -45,6 +46,27 @@ public class Face
         } else {
             distance = 999; 
         }
+    }
+
+    public void drawTriangle(Graphics2D g2, Point pa, Point pb, Point pc) {
+        int maxX = (int)(Math.max(Math.max(pa.get2Dx(), pb.get2Dx()), pc.get2Dx()) + 1);
+        int minX = (int)(Math.min(Math.min(pa.get2Dx(), pb.get2Dx()), pc.get2Dx()));
+        int maxY = (int)(Math.max(Math.max(pa.get2Dy(), pb.get2Dy()), pc.get2Dy()) + 1);
+        int minY = (int)(Math.min(Math.min(pa.get2Dy(), pb.get2Dy()), pc.get2Dy()));
+        for (int pX = minX; pX <= maxX; pX+=1) {
+            for (int pY = minY; pY <= maxY; pY+=1) {
+                if (pixelContained(pX, pY, pa, pb, pc)) {
+                    g2.drawLine(pX, pY, pX, pY);
+                }
+            }
+        }
+    }
+
+    public boolean pixelContained(double pX, double pY, Point pa, Point pb, Point pc) {
+        double edge1 = (pX - pa.get2Dx()) * (pb.get2Dy() - pa.get2Dy()) - (pY - pa.get2Dy()) * (pb.get2Dx() - pa.get2Dy());
+        double edge2 = (pX - pb.get2Dx()) * (pc.get2Dy() - pb.get2Dy()) - (pY - pb.get2Dy()) * (pc.get2Dx() - pb.get2Dy());
+        double edge3 = (pX - pc.get2Dx()) * (pa.get2Dy() - pc.get2Dy()) - (pY - pc.get2Dy()) * (pa.get2Dx() - pc.get2Dy());
+        return (edge1 >= 0 && edge2 >= 0 && edge3 >= 0);
     }
 
     public void transform(double[] transformationMatrix) {
