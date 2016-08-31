@@ -43,7 +43,11 @@ public class Face
             g2.drawString("" + (int)p1.getX() + "," + (int)p1.getY() + "," + (int)p1.getZ(), (int)p1.get2Dx(), (int)p1.get2Dy());
             g2.drawString("" + (int)p2.getX() + "," + (int)p2.getY() + "," + (int)p2.getZ(), (int)p2.get2Dx(), (int)p2.get2Dy());
             g2.drawString("" + (int)p3.getX() + "," + (int)p3.getY() + "," + (int)p3.getZ(), (int)p3.get2Dx(), (int)p3.get2Dy());
-        } else {
+       	    g2.setColor(Color.RED);
+	    g2.drawLine(p1.get2Dx(), p1.get2Dy(), p2.get2Dx(), p2.get2Dy());
+	    g2.drawLine(p2.get2Dx(), p2.get2Dy(), p3.get2Dx(), p3.get2Dy());
+            g2.drawLine(p3.get2Dx(), p3.get2Dy(), p1.get2Dx(), p1.get2Dy());
+	} else {
             distance = 999; 
         }
     }
@@ -63,10 +67,10 @@ public class Face
     }
 
     public boolean pixelContained(double pX, double pY, Point pa, Point pb, Point pc) {
-        double edge1 = (pX - pa.get2Dx()) * (pb.get2Dy() - pa.get2Dy()) - (pY - pa.get2Dy()) * (pb.get2Dx() - pa.get2Dy());
-        double edge2 = (pX - pb.get2Dx()) * (pc.get2Dy() - pb.get2Dy()) - (pY - pb.get2Dy()) * (pc.get2Dx() - pb.get2Dy());
-        double edge3 = (pX - pc.get2Dx()) * (pa.get2Dy() - pc.get2Dy()) - (pY - pc.get2Dy()) * (pa.get2Dx() - pc.get2Dy());
-        return (edge1 >= 0 && edge2 >= 0 && edge3 >= 0);
+        double edge1 = (pX - pa.get2Dx()) * (pb.get2Dy() - pa.get2Dy()) - (pY - pa.get2Dy()) * (pb.get2Dx() - pa.get2Dx());
+        double edge2 = (pX - pb.get2Dx()) * (pc.get2Dy() - pb.get2Dy()) - (pY - pb.get2Dy()) * (pc.get2Dx() - pb.get2Dx());
+        double edge3 = (pX - pc.get2Dx()) * (pa.get2Dy() - pc.get2Dy()) - (pY - pc.get2Dy()) * (pa.get2Dx() - pc.get2Dx());
+	return (edge1 >= 0 && edge2 >= 0 && edge3 >= 0);
     }
 
     public void transform(double[] transformationMatrix) {

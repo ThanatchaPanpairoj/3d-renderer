@@ -72,7 +72,7 @@ public class Renderer extends JFrame
         final int height = this.getHeight();
 
         Robot robot = new Robot();
-        //robot.mouseMove(width / 2 + 3, height / 2 + 25);
+        robot.mouseMove(width / 2 + 3, height / 2 + 25);
         //System.out.println("" + width + ", " + height);
 
         //         frame.setUndecorated(true);
@@ -85,7 +85,7 @@ public class Renderer extends JFrame
         class TimeListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 mouseX = MouseInfo.getPointerInfo().getLocation().getX() - getLocation().getX() - 3;
-                mouseY = MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 25;
+                mouseY = MouseInfo.getPointerInfo().getLocation().getY() - getLocation().getY() - 2;
 
                 double speed = 50;
                 if(numberOfDirectionsMoving > 1 && numberOfDirectionsMoving < 3) {
@@ -97,7 +97,7 @@ public class Renderer extends JFrame
                         0, -Math.sin(-yRotation), Math.cos(-yRotation), 0, 
                         0,                     0,                    0, 1});
 
-                double xSpinAngle = (width / 2 - mouseX) / 400000;
+                double xSpinAngle = (width / 2 - mouseX) / 400;
                 comp.rotate(new double[] {Math.cos(xSpinAngle), 0, Math.sin(xSpinAngle), 0,
                         0, 1,                    0, 0, 
                         -Math.sin(xSpinAngle), 0, Math.cos(xSpinAngle), 0, 
@@ -163,7 +163,7 @@ public class Renderer extends JFrame
                         0, -Math.sin(yRotation), Math.cos(yRotation), 0, 
                         0,                     0,                  0, 1});
 
-                double ySpinAngle = (height / 2 - mouseY) / 400000;
+                double ySpinAngle = (height / 2 - mouseY) / 400;
                 if(yRotation + ySpinAngle < Math.PI / 2 && yRotation + ySpinAngle > -Math.PI / 2) {
                     comp.rotate(new double[] {1,                     0,                    0, 0, 
                             0,  Math.cos(ySpinAngle), Math.sin(ySpinAngle), 0, 

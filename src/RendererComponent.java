@@ -110,7 +110,7 @@ public class RendererComponent extends JComponent
             double yShift = s.getY();
             double zShift = s.getZ();
 
-            if(s == firstCube) { 
+            if(false && s == firstCube) { 
                 s.transform(new double[] {1, 0, 0, -xShift, 
                         0, 1, 0, -yShift, 
                         0, 0, 1, -zShift, 
